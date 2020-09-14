@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-09-14T17:57:44.719Z" agent="5.0 (Windows)" etag="TB5cWiE9vp5KFsN4JMcx" version="13.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2020-09-14T19:18:48.599Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" etag="4IObJ3NlE9NHkmFJSulx" version="13.6.6" type="github">
   <diagram name="Page-1" id="2ca16b54-16f6-2749-3443-fa8db7711227">
-    <mxGraphModel dx="3809" dy="2019" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="3308" dy="1644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -172,23 +172,23 @@
             <mxPoint x="-693" y="280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ETAcVdLp8TT4r2R5xOlY-1" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToOne;endFill=1;exitX=1.01;exitY=0.883;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="y2381WITxYUz7QJ1ljLC-15">
+        <mxCell id="ETAcVdLp8TT4r2R5xOlY-1" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToOne;endFill=1;exitX=1.01;exitY=0.883;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="y2381WITxYUz7QJ1ljLC-15" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="-880" y="310" as="sourcePoint" />
             <mxPoint x="-320" y="228" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ETAcVdLp8TT4r2R5xOlY-2" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;" edge="1" parent="1">
-          <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="-420" y="470" as="sourcePoint" />
-            <mxPoint x="-320" y="370" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="ETAcVdLp8TT4r2R5xOlY-3" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;startArrow=ERone;startFill=0;entryX=-0.016;entryY=0.058;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="y2381WITxYUz7QJ1ljLC-13" target="y2381WITxYUz7QJ1ljLC-11">
+        <mxCell id="ETAcVdLp8TT4r2R5xOlY-3" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;startArrow=ERone;startFill=0;entryX=-0.016;entryY=0.058;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="y2381WITxYUz7QJ1ljLC-13" target="y2381WITxYUz7QJ1ljLC-11" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="-379.99999999999955" y="-162" as="sourcePoint" />
             <mxPoint x="-210" y="-40" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="HM5Xv7DNc_NoCFPY7eBH-1" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;VoucherTypes TODO&lt;br&gt;&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;VoucherID&lt;br&gt;&lt;/td&gt;&lt;td&gt;INT&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;VoucherCode&lt;/td&gt;&lt;td&gt;VarChar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;td&gt;VarChar&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;IssueDate&lt;/td&gt;&lt;td&gt;Date&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;ExpirationDate&lt;/td&gt;&lt;td&gt;Date&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="-320" y="500" width="200" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="HM5Xv7DNc_NoCFPY7eBH-2" value="Prijzen allee bij kleinste gemene deler" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="312.5" width="120" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
