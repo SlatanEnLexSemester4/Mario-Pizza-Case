@@ -54,7 +54,7 @@ CREATE TABLE Customer (
 CREATE TABLE AddressCustomer (
  ID INT PRIMARY KEY IDENTITY,
  AddressID INT REFERENCES "Address"(ID),
- CustomerID INT REFERENCES Customer(CustomerID),
+ CustomerID INT REFERENCES Customer(ID),
 );
 
 CREATE TABLE Voucher (
