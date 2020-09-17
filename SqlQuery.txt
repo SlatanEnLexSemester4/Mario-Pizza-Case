@@ -1,0 +1,178 @@
+--CREATE Database MARIO;
+CREATE TABLE "Address" (
+ ID INT PRIMARY KEY,
+ Streetname VARCHAR,
+ Number VARCHAR,
+ Zipcode VARCHAR,
+ City VARCHAR,
+ CountryCode VARCHAR
+);
+
+CREATE TABLE PaymentMethod (
+ ID INT PRIMARY KEY,
+ "Name" VARCHAR NOT NULL UNIQUE,
+);
+
+CREATE TABLE Municipality (
+ MunicipalityCode DECIMAL PRIMARY KEY,
+ "Name" VARCHAR
+);
+
+CREATE TABLE Zipcode (
+ Zipcode VARCHAR PRIMARY KEY,
+ SeriesIndex VARCHAR,
+ BreakpointFrom DECIMAL,
+ BreakpointTo DECIMAL,
+ City VARCHAR,
+ Streetname VARCHAR,
+ MunicipalityCode DECIMAL REFERENCES Municipality(MunicipalityCode)
+);
+
+CREATE TABLE Store (
+ ID INT PRIMARY KEY,
+ Name VARCHAR,
+ Streetname VARCHAR,
+ Number VARCHAR,
+ City VARCHAR,
+ CountryCode CHAR(2),
+ Zipcode VARCHAR REFERENCES Zipcode(Zipcode),
+ PhoneNumber VARCHAR
+);
+
+CREATE TABLE Customer (
+ ID INT PRIMARY KEY,
+ Email VARCHAR NOT NULL UNIQUE,
+ "Name" VARCHAR,
+ PhoneNumber VARCHAR,
+ PaymentMethodID INT REFERENCES PaymentMethod(ID),
+ StoreID INT REFERENCES Store(ID),
+ "Password" CHAR(64),
+ Newsletter BIT,
+ Sms BIT
+);
+
+CREATE TABLE AddressCustomer (
+ ID INT PRIMARY KEY,
+ AddressID INT REFERENCES "Address"(ID),
+ CustomerID INT REFERENCES Customer(ID),
+);
+
+CREATE TABLE ProductCategory (
+ ID INT PRIMARY KEY,
+  "Name" VARCHAR
+);
+
+CREATE TABLE VoucherType (
+ ID INT PRIMARY KEY,
+ "Name" VARCHAR,
+ "Description" VARCHAR
+);
+
+CREATE TABLE Voucher (
+ ID INT PRIMARY KEY,
+ VoucherCode VARCHAR,
+ "Type" INT REFERENCES VoucherType(ID),
+ Amount INT,
+ Category INT REFERENCES ProductCategory(ID),
+ MinimumOrderAmount INT,
+ IssueDate DATE,
+ ExpirationDate DATE
+);
+
+CREATE TABLE Tax (
+ ID INT PRIMARY KEY,
+ Rate DECIMAL,
+ ValidFrom DATE,
+ ValidTill DATE
+);
+
+CREATE TABLE "Order" (
+ ID INT PRIMARY KEY,
+ CustomerID INT REFERENCES Customer(ID),
+ StoreID INT REFERENCES Store(ID),
+ Delivery BIT,
+ AddressID INT REFERENCES Address(ID),
+ DeliveryTime DATETIME,
+ DeliveryCost SMALLMONEY,
+ VoucherID INT REFERENCES Voucher(ID),
+ Tip SMALLMONEY,
+ TotalPrice SMALLMONEY,
+ PaymentMethodID INT REFERENCES PaymentMethod(ID),
+ TaxID INT REFERENCES Tax(ID)
+);
+
+CREATE TABLE OrderItem (
+ ID INT PRIMARY KEY,
+ OrderID INT REFERENCES "Order"(ID),
+ Quantity INT,
+ Price SMALLMONEY
+);
+
+CREATE TABLE PizzaCrustProperties (
+ ID INT PRIMARY KEY,
+ Diamater VARCHAR,
+ "Description" VARCHAR,
+ Fee SMALLMONEY,
+ "Availability" BIT,
+ ValidFrom DATE,
+ ValidTill DATE
+);
+
+CREATE TABLE PizzaCrust (
+ ID INT PRIMARY KEY,
+ PizzaCrustPropertiesID INT REFERENCES PizzaCrustProperties(ID),
+ "Name" VARCHAR
+);
+
+CREATE TABLE IngredientCategory (
+ ID INT PRIMARY KEY,
+ "Name" VARCHAR
+);
+
+CREATE TABLE IngredientProperties (
+ ID INT PRIMARY KEY,
+ IngredientCategoryID INT REFERENCES IngredientCategory(ID),
+ "Description" VARCHAR,
+ Price SMALLMONEY,
+ Spicy BIT,
+ Vegetarian BIT,
+ ValidFrom DATE,
+ ValidTill DATE
+);
+
+CREATE TABLE Ingredient (
+ ID INT PRIMARY KEY,
+ IngredientPropertiesID INT REFERENCES IngredientProperties(ID),
+ "Name" VARCHAR
+);
+
+CREATE TABLE ProductProperties (
+ ID INT PRIMARY KEY,
+ ProductCategoryID INT REFERENCES ProductCategory(ID),
+ "Description" VARCHAR,
+ Price SMALLMONEY,
+ Spicy BIT,
+ Vegetarian BIT,
+ ValidFrom DATE,
+ ValidTill DATE
+);
+
+CREATE TABLE Product (
+ ID INT PRIMARY KEY,
+ ProductPropertiesID INT REFERENCES ProductProperties(ID),
+ "Name" VARCHAR,
+);
+
+CREATE TABLE PizzaRecipe (
+ ID INT PRIMARY KEY,
+ ProductID INT REFERENCES Product(ID),
+ IngredientID INT REFERENCES Ingredient(ID)
+);
+
+CREATE TABLE Item (
+ ID INT PRIMARY KEY,
+ OrderItemID INT REFERENCES OrderItem(ID),
+ ProductID INT REFERENCES Product(ID),
+ IngredientID INT REFERENCES Ingredient(ID),
+ PizzaCrustID INT REFERENCES PizzaCrust(ID)
+);
