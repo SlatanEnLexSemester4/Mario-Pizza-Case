@@ -4,7 +4,7 @@ CREATE TABLE "Address" (
  Streetname VARCHAR(100),
  Number VARCHAR(10),
  Zipcode VARCHAR(10),
- City VARCHAR(100),
+ City VARCHAR(10),
  CountryCode VARCHAR(10)
 );
 
@@ -14,13 +14,13 @@ CREATE TABLE PaymentMethod (
 );
 
 CREATE TABLE Municipality (
- MunicipalityCode DECIMAL PRIMARY KEY,
+ MunicipalityCode DECIMAL PRIMARY KEY IDENTITY,
  "Name" VARCHAR(100)
 );
 
 CREATE TABLE Zipcode (
  Zipcode VARCHAR(10) PRIMARY KEY,
- SeriesIndex VARCHAR(100),
+ SeriesIndex VARCHAR(10),
  BreakpointFrom DECIMAL,
  BreakpointTo DECIMAL,
  City VARCHAR(100),
@@ -34,19 +34,19 @@ CREATE TABLE Store (
  Streetname VARCHAR(100),
  Number VARCHAR(10),
  City VARCHAR(100),
- CountryCode VARCHAR(10),
+ CountryCode CHAR(2),
  Zipcode VARCHAR(10) REFERENCES Zipcode(Zipcode),
- PhoneNumber VARCHAR(50)
+ PhoneNumber VARCHAR(10)
 );
 
 CREATE TABLE Customer (
  ID INT PRIMARY KEY IDENTITY,
  Email VARCHAR(100) NOT NULL UNIQUE,
  "Name" VARCHAR(100),
- PhoneNumber VARCHAR(30),
+ PhoneNumber VARCHAR(10),
  PaymentMethodID INT REFERENCES PaymentMethod(ID),
  StoreID INT REFERENCES Store(ID),
- "Password" VARCHAR(100),
+ "Password" CHAR(64),
  Newsletter BIT,
  Sms BIT
 );
@@ -57,12 +57,33 @@ CREATE TABLE AddressCustomer (
  CustomerID INT REFERENCES Customer(ID),
 );
 
+CREATE TABLE ProductCategory (
+ ID INT PRIMARY KEY IDENTITY,
+  "Name" VARCHAR(100)
+);
+
+CREATE TABLE VoucherType (
+ ID INT PRIMARY KEY IDENTITY,
+ "Name" VARCHAR(100),
+ "Description" VARCHAR(500)
+);
+
 CREATE TABLE Voucher (
  ID INT PRIMARY KEY IDENTITY,
  VoucherCode VARCHAR(100),
- "Description" VARCHAR(500),
+ "Type" INT REFERENCES VoucherType(ID),
+ Amount INT,
+ Category INT REFERENCES ProductCategory(ID),
+ MinimumOrderAmount INT,
  IssueDate DATE,
  ExpirationDate DATE
+);
+
+CREATE TABLE Tax (
+ ID INT PRIMARY KEY IDENTITY,
+ Rate DECIMAL,
+ ValidFrom DATE,
+ ValidTill DATE
 );
 
 CREATE TABLE "Order" (
@@ -76,7 +97,8 @@ CREATE TABLE "Order" (
  VoucherID INT REFERENCES Voucher(ID),
  Tip SMALLMONEY,
  TotalPrice SMALLMONEY,
- PaymentMethodID INT REFERENCES PaymentMethod(ID)
+ PaymentMethodID INT REFERENCES PaymentMethod(ID),
+ TaxID INT REFERENCES Tax(ID)
 );
 
 CREATE TABLE OrderItem (
@@ -86,13 +108,20 @@ CREATE TABLE OrderItem (
  Price SMALLMONEY
 );
 
-CREATE TABLE PizzaCrust (
+CREATE TABLE PizzaCrustProperties (
  ID INT PRIMARY KEY IDENTITY,
- "Name" VARCHAR(100),
  Diamater VARCHAR(10),
  "Description" VARCHAR(500),
  Fee SMALLMONEY,
- "Availability" BIT
+ "Availability" BIT,
+ ValidFrom DATE,
+ ValidTill DATE
+);
+
+CREATE TABLE PizzaCrust (
+ ID INT PRIMARY KEY IDENTITY,
+ PizzaCrustPropertiesID INT REFERENCES PizzaCrustProperties(ID),
+ "Name" VARCHAR(100)
 );
 
 CREATE TABLE IngredientCategory (
@@ -100,29 +129,38 @@ CREATE TABLE IngredientCategory (
  "Name" VARCHAR(100)
 );
 
-CREATE TABLE Ingredient (
+CREATE TABLE IngredientProperties (
  ID INT PRIMARY KEY IDENTITY,
  IngredientCategoryID INT REFERENCES IngredientCategory(ID),
- "Name" VARCHAR(100),
  "Description" VARCHAR(500),
  Price SMALLMONEY,
  Spicy BIT,
- Vegetarian BIT
+ Vegetarian BIT,
+ ValidFrom DATE,
+ ValidTill DATE
 );
 
-CREATE TABLE ProductCategory (
+CREATE TABLE Ingredient (
  ID INT PRIMARY KEY IDENTITY,
-  "Name" VARCHAR(100)
+ IngredientPropertiesID INT REFERENCES IngredientProperties(ID),
+ "Name" VARCHAR(100)
+);
+
+CREATE TABLE ProductProperties (
+ ID INT PRIMARY KEY IDENTITY,
+ ProductCategoryID INT REFERENCES ProductCategory(ID),
+ "Description" VARCHAR(500),
+ Price SMALLMONEY,
+ Spicy BIT,
+ Vegetarian BIT,
+ ValidFrom DATE,
+ ValidTill DATE
 );
 
 CREATE TABLE Product (
  ID INT PRIMARY KEY IDENTITY,
- ProductCategoryID INT REFERENCES ProductCategory(ID),
+ ProductPropertiesID INT REFERENCES ProductProperties(ID),
  "Name" VARCHAR(100),
- "Description" VARCHAR(500),
- Price SMALLMONEY,
- Spicy BIT,
- Vegetarian BIT
 );
 
 CREATE TABLE PizzaRecipe (
