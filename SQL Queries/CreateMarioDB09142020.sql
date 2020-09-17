@@ -1,6 +1,6 @@
 --CREATE Database MARIO;
 CREATE TABLE "Address" (
- AddressID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  Streetname VARCHAR(100),
  Number VARCHAR(10),
  Zipcode VARCHAR(10),
@@ -9,7 +9,7 @@ CREATE TABLE "Address" (
 );
 
 CREATE TABLE PaymentMethod (
- PaymentMethodID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  "Name" VARCHAR(100) NOT NULL UNIQUE,
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE Zipcode (
 );
 
 CREATE TABLE Store (
- StoreID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  Name VARCHAR(100),
  Streetname VARCHAR(100),
  Number VARCHAR(10),
@@ -40,7 +40,7 @@ CREATE TABLE Store (
 );
 
 CREATE TABLE Customer (
- CustomerID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  Email VARCHAR(100) NOT NULL UNIQUE,
  "Name" VARCHAR(100),
  PhoneNumber VARCHAR(30),
@@ -52,13 +52,13 @@ CREATE TABLE Customer (
 );
 
 CREATE TABLE AddressCustomer (
- AddressCustomerID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  AddressID INT REFERENCES "Address"(AddressID),
  CustomerID INT REFERENCES Customer(CustomerID),
 );
 
 CREATE TABLE Voucher (
- VoucherID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  VoucherCode VARCHAR(100),
  "Description" VARCHAR(500),
  IssueDate DATE,
@@ -66,7 +66,7 @@ CREATE TABLE Voucher (
 );
 
 CREATE TABLE "Order" (
- OrderID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  CustomerID INT REFERENCES Customer(CustomerID),
  StoreID INT REFERENCES Store(StoreID),
  Delivery BIT,
@@ -80,14 +80,14 @@ CREATE TABLE "Order" (
 );
 
 CREATE TABLE OrderItem (
- OrderItemID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  OrderID INT REFERENCES "Order"(OrderID),
  Quantity INT,
  Price SMALLMONEY
 );
 
 CREATE TABLE PizzaCrust (
- PizzaCrustID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  "Name" VARCHAR(100),
  Diamater VARCHAR(10),
  "Description" VARCHAR(500),
@@ -96,12 +96,12 @@ CREATE TABLE PizzaCrust (
 );
 
 CREATE TABLE IngredientCategory (
- IngredientCategoryID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  "Name" VARCHAR(100)
 );
 
 CREATE TABLE Ingredient (
- IngredientID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  IngredientCategoryID INT REFERENCES IngredientCategory(IngredientCategoryID),
  "Name" VARCHAR(100),
  "Description" VARCHAR(500),
@@ -111,12 +111,12 @@ CREATE TABLE Ingredient (
 );
 
 CREATE TABLE ProductCategory (
- ProductCategoryID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
   "Name" VARCHAR(100)
 );
 
 CREATE TABLE Product (
- ProductID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  ProductCategoryID INT REFERENCES ProductCategory(ProductCategoryID),
  "Name" VARCHAR(100),
  "Description" VARCHAR(500),
@@ -126,13 +126,13 @@ CREATE TABLE Product (
 );
 
 CREATE TABLE PizzaRecipe (
- PizzaRecipeID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  ProductID INT REFERENCES Product(ProductID),
  IngredientID INT REFERENCES Ingredient(IngredientID)
 );
 
 CREATE TABLE Item (
- ItemID INT PRIMARY KEY,
+ ID INT PRIMARY KEY IDENTITY,
  OrderItemID INT REFERENCES OrderItem(OrderItemID),
  ProductID INT REFERENCES Product(ProductID),
  IngredientID INT REFERENCES Ingredient(IngredientID),
