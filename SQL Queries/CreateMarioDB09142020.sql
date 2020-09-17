@@ -44,8 +44,8 @@ CREATE TABLE Customer (
  Email VARCHAR(100) NOT NULL UNIQUE,
  "Name" VARCHAR(100),
  PhoneNumber VARCHAR(30),
- PaymentMethodID INT REFERENCES PaymentMethod(PaymentMethodID),
- StoreID INT REFERENCES Store(StoreID),
+ PaymentMethodID INT REFERENCES PaymentMethod(ID),
+ StoreID INT REFERENCES Store(ID),
  "Password" VARCHAR(100),
  Newsletter BIT,
  Sms BIT
@@ -53,7 +53,7 @@ CREATE TABLE Customer (
 
 CREATE TABLE AddressCustomer (
  ID INT PRIMARY KEY IDENTITY,
- AddressID INT REFERENCES "Address"(AddressID),
+ AddressID INT REFERENCES "Address"(ID),
  CustomerID INT REFERENCES Customer(CustomerID),
 );
 
@@ -67,21 +67,21 @@ CREATE TABLE Voucher (
 
 CREATE TABLE "Order" (
  ID INT PRIMARY KEY IDENTITY,
- CustomerID INT REFERENCES Customer(CustomerID),
- StoreID INT REFERENCES Store(StoreID),
+ CustomerID INT REFERENCES Customer(ID),
+ StoreID INT REFERENCES Store(ID),
  Delivery BIT,
- AddressID INT REFERENCES Address(AddressID),
+ AddressID INT REFERENCES Address(ID),
  DeliveryTime DATETIME,
  DeliveryCost SMALLMONEY,
- VoucherID INT REFERENCES Voucher(VoucherID),
+ VoucherID INT REFERENCES Voucher(ID),
  Tip SMALLMONEY,
  TotalPrice SMALLMONEY,
- PaymentMethodID INT REFERENCES PaymentMethod(PaymentMethodID)
+ PaymentMethodID INT REFERENCES PaymentMethod(ID)
 );
 
 CREATE TABLE OrderItem (
  ID INT PRIMARY KEY IDENTITY,
- OrderID INT REFERENCES "Order"(OrderID),
+ OrderID INT REFERENCES "Order"(ID),
  Quantity INT,
  Price SMALLMONEY
 );
@@ -102,7 +102,7 @@ CREATE TABLE IngredientCategory (
 
 CREATE TABLE Ingredient (
  ID INT PRIMARY KEY IDENTITY,
- IngredientCategoryID INT REFERENCES IngredientCategory(IngredientCategoryID),
+ IngredientCategoryID INT REFERENCES IngredientCategory(ID),
  "Name" VARCHAR(100),
  "Description" VARCHAR(500),
  Price SMALLMONEY,
@@ -117,7 +117,7 @@ CREATE TABLE ProductCategory (
 
 CREATE TABLE Product (
  ID INT PRIMARY KEY IDENTITY,
- ProductCategoryID INT REFERENCES ProductCategory(ProductCategoryID),
+ ProductCategoryID INT REFERENCES ProductCategory(ID),
  "Name" VARCHAR(100),
  "Description" VARCHAR(500),
  Price SMALLMONEY,
@@ -127,14 +127,14 @@ CREATE TABLE Product (
 
 CREATE TABLE PizzaRecipe (
  ID INT PRIMARY KEY IDENTITY,
- ProductID INT REFERENCES Product(ProductID),
- IngredientID INT REFERENCES Ingredient(IngredientID)
+ ProductID INT REFERENCES Product(ID),
+ IngredientID INT REFERENCES Ingredient(ID)
 );
 
 CREATE TABLE Item (
  ID INT PRIMARY KEY IDENTITY,
- OrderItemID INT REFERENCES OrderItem(OrderItemID),
- ProductID INT REFERENCES Product(ProductID),
- IngredientID INT REFERENCES Ingredient(IngredientID),
- PizzaCrustID INT REFERENCES PizzaCrust(PizzaCrustID)
+ OrderItemID INT REFERENCES OrderItem(ID),
+ ProductID INT REFERENCES Product(ID),
+ IngredientID INT REFERENCES Ingredient(ID),
+ PizzaCrustID INT REFERENCES PizzaCrust(ID)
 );
