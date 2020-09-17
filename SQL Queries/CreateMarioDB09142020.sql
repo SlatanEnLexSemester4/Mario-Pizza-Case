@@ -1,58 +1,71 @@
 --CREATE Database MARIO;
 CREATE TABLE "Address" (
  AddressID INT PRIMARY KEY,
- Streetname VARCHAR,
- Number VARCHAR,
- Zipcode VARCHAR,
- City VARCHAR,
- CountryCode VARCHAR
-);CREATE TABLE PaymentMethod (
+ Streetname VARCHAR(100),
+ Number VARCHAR(10),
+ Zipcode VARCHAR(10),
+ City VARCHAR(100),
+ CountryCode VARCHAR(10)
+);
+
+CREATE TABLE PaymentMethod (
  PaymentMethodID INT PRIMARY KEY,
- "Name" VARCHAR NOT NULL UNIQUE,
-);
+ "Name" VARCHAR(100) NOT NULL UNIQUE,
+);
+
 CREATE TABLE Municipality (
  MunicipalityCode DECIMAL PRIMARY KEY,
- "Name" VARCHAR
+ "Name" VARCHAR(100)
 );
 
 CREATE TABLE Zipcode (
- Zipcode VARCHAR PRIMARY KEY,
- SeriesIndex VARCHAR,
+ Zipcode VARCHAR(10) PRIMARY KEY,
+ SeriesIndex VARCHAR(100),
  BreakpointFrom DECIMAL,
  BreakpointTo DECIMAL,
- City VARCHAR,
- Streetname VARCHAR,
+ City VARCHAR(100),
+ Streetname VARCHAR(100),
  MunicipalityCode DECIMAL REFERENCES Municipality(MunicipalityCode)
-);CREATE TABLE Store (
+);
+
+CREATE TABLE Store (
  StoreID INT PRIMARY KEY,
- Name VARCHAR,
- Streetname VARCHAR,
- Number VARCHAR,
- City VARCHAR,
- CountryCode CHAR(2),
- Zipcode VARCHAR REFERENCES Zipcode(Zipcode),
- PhoneNumber VARCHAR
-);CREATE TABLE Customer (
+ Name VARCHAR(100),
+ Streetname VARCHAR(100),
+ Number VARCHAR(10),
+ City VARCHAR(100),
+ CountryCode VARCHAR(10),
+ Zipcode VARCHAR(10) REFERENCES Zipcode(Zipcode),
+ PhoneNumber VARCHAR(50)
+);
+
+CREATE TABLE Customer (
  CustomerID INT PRIMARY KEY,
- Email VARCHAR NOT NULL UNIQUE,
- "Name" VARCHAR,
- PhoneNumber VARCHAR,
+ Email VARCHAR(100) NOT NULL UNIQUE,
+ "Name" VARCHAR(100),
+ PhoneNumber VARCHAR(30),
  PaymentMethodID INT REFERENCES PaymentMethod(PaymentMethodID),
  StoreID INT REFERENCES Store(StoreID),
- "Password" CHAR(64),
+ "Password" VARCHAR(100),
  Newsletter BIT,
  Sms BIT
-);CREATE TABLE AddressCustomer (
+);
+
+CREATE TABLE AddressCustomer (
  AddressCustomerID INT PRIMARY KEY,
  AddressID INT REFERENCES "Address"(AddressID),
  CustomerID INT REFERENCES Customer(CustomerID),
-);CREATE TABLE Voucher (
+);
+
+CREATE TABLE Voucher (
  VoucherID INT PRIMARY KEY,
- VoucherCode VARCHAR,
- "Description" VARCHAR,
+ VoucherCode VARCHAR(100),
+ "Description" VARCHAR(500),
  IssueDate DATE,
  ExpirationDate DATE
-);CREATE TABLE "Order" (
+);
+
+CREATE TABLE "Order" (
  OrderID INT PRIMARY KEY,
  CustomerID INT REFERENCES Customer(CustomerID),
  StoreID INT REFERENCES Store(StoreID),
@@ -64,45 +77,61 @@ CREATE TABLE Zipcode (
  Tip SMALLMONEY,
  TotalPrice SMALLMONEY,
  PaymentMethodID INT REFERENCES PaymentMethod(PaymentMethodID)
-);CREATE TABLE OrderItem (
+);
+
+CREATE TABLE OrderItem (
  OrderItemID INT PRIMARY KEY,
  OrderID INT REFERENCES "Order"(OrderID),
  Quantity INT,
  Price SMALLMONEY
-);CREATE TABLE PizzaCrust (
+);
+
+CREATE TABLE PizzaCrust (
  PizzaCrustID INT PRIMARY KEY,
- "Name" VARCHAR,
- Diamater VARCHAR,
- "Description" VARCHAR,
+ "Name" VARCHAR(100),
+ Diamater VARCHAR(10),
+ "Description" VARCHAR(500),
  Fee SMALLMONEY,
  "Availability" BIT
-);CREATE TABLE IngredientCategory (
+);
+
+CREATE TABLE IngredientCategory (
  IngredientCategoryID INT PRIMARY KEY,
- "Name" VARCHAR
-);CREATE TABLE Ingredient (
+ "Name" VARCHAR(100)
+);
+
+CREATE TABLE Ingredient (
  IngredientID INT PRIMARY KEY,
  IngredientCategoryID INT REFERENCES IngredientCategory(IngredientCategoryID),
- "Name" VARCHAR,
- "Description" VARCHAR,
+ "Name" VARCHAR(100),
+ "Description" VARCHAR(500),
  Price SMALLMONEY,
  Spicy BIT,
  Vegetarian BIT
-);CREATE TABLE ProductCategory (
+);
+
+CREATE TABLE ProductCategory (
  ProductCategoryID INT PRIMARY KEY,
-  "Name" VARCHAR
-);CREATE TABLE Product (
+  "Name" VARCHAR(100)
+);
+
+CREATE TABLE Product (
  ProductID INT PRIMARY KEY,
  ProductCategoryID INT REFERENCES ProductCategory(ProductCategoryID),
- "Name" VARCHAR,
- "Description" VARCHAR,
+ "Name" VARCHAR(100),
+ "Description" VARCHAR(500),
  Price SMALLMONEY,
  Spicy BIT,
  Vegetarian BIT
-);CREATE TABLE PizzaRecipe (
+);
+
+CREATE TABLE PizzaRecipe (
  PizzaRecipeID INT PRIMARY KEY,
  ProductID INT REFERENCES Product(ProductID),
  IngredientID INT REFERENCES Ingredient(IngredientID)
-);CREATE TABLE Item (
+);
+
+CREATE TABLE Item (
  ItemID INT PRIMARY KEY,
  OrderItemID INT REFERENCES OrderItem(OrderItemID),
  ProductID INT REFERENCES Product(ProductID),
