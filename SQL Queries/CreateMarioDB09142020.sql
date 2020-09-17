@@ -90,6 +90,7 @@ CREATE TABLE "Order" (
  ID INT PRIMARY KEY IDENTITY,
  CustomerID INT REFERENCES Customer(ID),
  StoreID INT REFERENCES Store(ID),
+ OrderTime DATE,
  Delivery BIT,
  AddressID INT REFERENCES Address(ID),
  DeliveryTime DATETIME,
