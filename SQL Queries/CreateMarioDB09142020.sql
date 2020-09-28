@@ -2,7 +2,7 @@
 CREATE TABLE "Address" (
  ID INT PRIMARY KEY IDENTITY,
  Streetname VARCHAR(100),
- Number VARCHAR(10),
+ "Number" VARCHAR(10),
  Zipcode VARCHAR(10),
  City VARCHAR(10),
  CountryCode VARCHAR(10)
@@ -94,10 +94,10 @@ CREATE TABLE "Order" (
  Delivery BIT,
  AddressID INT REFERENCES Address(ID),
  DeliveryTime DATETIME,
- DeliveryCost SMALLMONEY,
+ DeliveryCost DECIMAL,
  VoucherID INT REFERENCES Voucher(ID),
- Tip SMALLMONEY,
- TotalPrice SMALLMONEY,
+ Tip DECIMAL,
+ TotalPrice DECIMAL,
  PaymentMethodID INT REFERENCES PaymentMethod(ID),
  TaxID INT REFERENCES Tax(ID)
 );
@@ -106,23 +106,23 @@ CREATE TABLE OrderItem (
  ID INT PRIMARY KEY IDENTITY,
  OrderID INT REFERENCES "Order"(ID),
  Quantity INT,
- Price SMALLMONEY
+ Price DECIMAL
 );
 
 CREATE TABLE PizzaCrustProperties (
  ID INT PRIMARY KEY IDENTITY,
- Diamater VARCHAR(10),
+ Diameter VARCHAR(10),
  "Description" VARCHAR(500),
- Fee SMALLMONEY,
+ Fee DECIMAL,
  "Availability" BIT,
- ValidFrom DATE,
- ValidTill DATE
+ VersionValidFrom DATE,
+ VersionValidTill DATE
 );
 
 CREATE TABLE PizzaCrust (
  ID INT PRIMARY KEY IDENTITY,
  PizzaCrustPropertiesID INT REFERENCES PizzaCrustProperties(ID),
- "Name" VARCHAR(100)
+ "Name" VARCHAR(50)
 );
 
 CREATE TABLE IngredientCategory (
@@ -134,7 +134,7 @@ CREATE TABLE IngredientProperties (
  ID INT PRIMARY KEY IDENTITY,
  IngredientCategoryID INT REFERENCES IngredientCategory(ID),
  "Description" VARCHAR(500),
- Price SMALLMONEY,
+ Price DECIMAL,
  Spicy BIT,
  Vegetarian BIT,
  ValidFrom DATE,
@@ -144,14 +144,14 @@ CREATE TABLE IngredientProperties (
 CREATE TABLE Ingredient (
  ID INT PRIMARY KEY IDENTITY,
  IngredientPropertiesID INT REFERENCES IngredientProperties(ID),
- "Name" VARCHAR(100)
+ "Name" VARCHAR(50)
 );
 
 CREATE TABLE ProductProperties (
  ID INT PRIMARY KEY IDENTITY,
  ProductCategoryID INT REFERENCES ProductCategory(ID),
  "Description" VARCHAR(500),
- Price SMALLMONEY,
+ Price DECIMAL,
  Spicy BIT,
  Vegetarian BIT,
  ValidFrom DATE,
@@ -161,7 +161,7 @@ CREATE TABLE ProductProperties (
 CREATE TABLE Product (
  ID INT PRIMARY KEY IDENTITY,
  ProductPropertiesID INT REFERENCES ProductProperties(ID),
- "Name" VARCHAR(100),
+ "Name" VARCHAR(50),
 );
 
 CREATE TABLE PizzaRecipe (
@@ -174,6 +174,9 @@ CREATE TABLE Item (
  ID INT PRIMARY KEY IDENTITY,
  OrderItemID INT REFERENCES OrderItem(ID),
  ProductID INT REFERENCES Product(ID),
+ ProductPropertiesID INT REFERENCES ProductProperties(ID),
  IngredientID INT REFERENCES Ingredient(ID),
- PizzaCrustID INT REFERENCES PizzaCrust(ID)
+ IngredientPropertiesID INT REFERENCES IngredientProperties(ID),
+ PizzaCrustID INT REFERENCES PizzaCrust(ID),
+ PizzaCrustPropertiesID INT REFERENCES PizzaCrustProperties(ID)
 );
