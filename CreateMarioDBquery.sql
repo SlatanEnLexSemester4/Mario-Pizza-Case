@@ -1,21 +1,22 @@
---CREATE Database MARIO;
+--CREATE DATABASE MarioDB;
+
 CREATE TABLE "Address" (
  ID INT PRIMARY KEY IDENTITY,
  Streetname VARCHAR(100),
  "Number" VARCHAR(10),
  Zipcode VARCHAR(10),
- City VARCHAR(10),
- CountryCode VARCHAR(10)
+ City VARCHAR(100),
+ CountryCode VARCHAR(5)
 );
 
 CREATE TABLE PaymentMethod (
  ID INT PRIMARY KEY IDENTITY,
- "Name" VARCHAR(100) NOT NULL UNIQUE,
+ "Name" VARCHAR(50) NOT NULL UNIQUE,
 );
 
 CREATE TABLE Municipality (
- MunicipalityCode DECIMAL PRIMARY KEY IDENTITY,
- "Name" VARCHAR(100)
+ MunicipalityCode INT PRIMARY KEY IDENTITY,
+ "Name" VARCHAR(50)
 );
 
 CREATE TABLE Zipcode (
@@ -25,25 +26,25 @@ CREATE TABLE Zipcode (
  BreakpointTo DECIMAL,
  City VARCHAR(100),
  Streetname VARCHAR(100),
- MunicipalityCode DECIMAL REFERENCES Municipality(MunicipalityCode)
+ MunicipalityCode INT REFERENCES Municipality(MunicipalityCode)
 );
 
 CREATE TABLE Store (
  ID INT PRIMARY KEY IDENTITY,
- Name VARCHAR(100),
+ "Name" VARCHAR(50),
  Streetname VARCHAR(100),
  Number VARCHAR(10),
  City VARCHAR(100),
- CountryCode CHAR(2),
+ CountryCode VARCHAR(5),
  Zipcode VARCHAR(10) REFERENCES Zipcode(Zipcode),
- PhoneNumber VARCHAR(10)
+ PhoneNumber VARCHAR(20)
 );
 
 CREATE TABLE Customer (
  ID INT PRIMARY KEY IDENTITY,
- Email VARCHAR(100) NOT NULL UNIQUE,
- "Name" VARCHAR(100),
- PhoneNumber VARCHAR(10),
+ Email VARCHAR(50) NOT NULL UNIQUE,
+ "Name" VARCHAR(50),
+ PhoneNumber VARCHAR(20),
  PaymentMethodID INT REFERENCES PaymentMethod(ID),
  StoreID INT REFERENCES Store(ID),
  "Password" CHAR(64),
@@ -59,20 +60,20 @@ CREATE TABLE AddressCustomer (
 
 CREATE TABLE ProductCategory (
  ID INT PRIMARY KEY IDENTITY,
-  "Name" VARCHAR(100)
+  "Name" VARCHAR(50)
 );
 
 CREATE TABLE VoucherType (
  ID INT PRIMARY KEY IDENTITY,
- "Name" VARCHAR(100),
+ "Name" VARCHAR(50),
  "Description" VARCHAR(500)
 );
 
 CREATE TABLE Voucher (
  ID INT PRIMARY KEY IDENTITY,
- VoucherCode VARCHAR(100),
+ VoucherCode VARCHAR(50),
  "Type" INT REFERENCES VoucherType(ID),
- Amount INT,
+ Amount DECIMAL,
  Category INT REFERENCES ProductCategory(ID),
  MinimumOrderAmount INT,
  IssueDate DATE,
