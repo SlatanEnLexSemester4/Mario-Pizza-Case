@@ -70,4 +70,31 @@ Postcode VARCHAR(10),
 Telefoon VARCHAR(20)
 );
 
+CREATE TABLE MarioOrderData
+(
+Winkelnaam VARCHAR(100),
+Klantnaam VARCHAR(50),
+Telefoon VARCHAR(20),
+Email VARCHAR(50),
+Adres VARCHAR(100),
+Woonplaats VARCHAR(100),
+Besteldatum DATE,
+AfleverType BIT,
+AfleverDatum DATE,
+AfleverMoment DATETIME,
+Product VARCHAR(50),
+PizzaBodem VARCHAR(50),
+PizzaSaus VARCHAR(50),
+Prijs DECIMAL,
+Bezorgkosten DECIMAL,
+Aantal INT,
+ExtraIngredienten VARCHAR(100),
+PrijsExtraIngredient DECIMAL,
+Regelprijs DECIMAL,
+Totaalprijs DECIMAL,
+GebruikteCoupon VARCHAR(100),
+CouponKorting DECIMAL,
+TeBetalen DECIMAL
+);
+
 
