@@ -11,6 +11,8 @@ namespace Mario_Data_Conversion_Tool
 {
     class MarioOverigeProductenConverter
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         String fileName;
 
         public MarioOverigeProductenConverter(string fileName)
@@ -20,6 +22,10 @@ namespace Mario_Data_Conversion_Tool
 
         public void ReadFile()
         {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
             ExcelPackage xlPackage = new ExcelPackage(new FileInfo(fileName));
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
@@ -65,8 +71,9 @@ namespace Mario_Data_Conversion_Tool
                 {
                     tempVegetarian = false;
                 }
-                //System.Console.WriteLine(tempName + " " + tempDiameter + " " + tempDescription +" " + decimal.Parse(tempFee) +" " + tempAvailable);
+                
                 overigeProducten.Add(new OverigProduct(tempCategory, tempSubtempCategory, tempName, tempDescription, decimal.Parse(tempPrice, CultureInfo.InvariantCulture), tempSpicy, tempVegetarian));
+                log.Info("Succesfully added line:" + rowNum);
 
                 tempCategory = "";
                 tempSubtempCategory = "";
@@ -76,16 +83,6 @@ namespace Mario_Data_Conversion_Tool
                 tempSpicy = false;
                 tempVegetarian = false;
 
-            }
-            foreach (OverigProduct overigProduct in overigeProducten)
-            {
-                System.Console.WriteLine("Cat: " + overigProduct.Category);
-                System.Console.WriteLine("SubCat: " + overigProduct.Subcategory);
-                System.Console.WriteLine("Name: " + overigProduct.Name);
-                System.Console.WriteLine("Desc: " + overigProduct.Description);
-                System.Console.WriteLine("Price: " + overigProduct.Price);
-                System.Console.WriteLine("Spicy: " + overigProduct.Spicy);
-                System.Console.WriteLine("Vegy: " + overigProduct.Vegetarian);
             }
 
         }

@@ -8,6 +8,8 @@ namespace Mario_Data_Conversion_Tool
 {
     class MarioExtraIngredientenConverter
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         String fileName;
         int headerLines = 1;
 
@@ -18,6 +20,10 @@ namespace Mario_Data_Conversion_Tool
 
         public void ReadFile()
         {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
             string line;
             List<ExtraIngredient> extraIngredienten = new List<ExtraIngredient>();
 
@@ -38,14 +44,11 @@ namespace Mario_Data_Conversion_Tool
                 values[1] = new string(values[1].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
 
                 extraIngredienten.Add(new ExtraIngredient(values[0], decimal.Parse(values[1], CultureInfo.InvariantCulture)));
+                log.Info("Added line:" + line);
 
             }
             file.Close();
-            // Suspend the screen.  
-            foreach (ExtraIngredient extraIngredient in extraIngredienten)
-            {
-                System.Console.WriteLine(extraIngredient.Name + " " + extraIngredient.ExtraPrice.ToString());
-            }
+
         }
     }
 }

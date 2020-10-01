@@ -11,11 +11,11 @@ namespace Mario_Data_Conversion_Tool.DataTypes
         public SqlString Subcategory { get; private set; }
         public SqlString Name { get; private set; }
         public SqlString Description { get; private set; }
-        public SqlMoney Price { get; private set; }
+        public SqlDecimal Price { get; private set; }
         public SqlBoolean Spicy { get; private set; }
         public SqlBoolean Vegetarian { get; private set; }
 
-        public OverigProduct(SqlString catergory, SqlString subcategory, SqlString name, SqlString description, SqlMoney price, SqlBoolean spicy, SqlBoolean vegetarian)
+        public OverigProduct(SqlString catergory, SqlString subcategory, SqlString name, SqlString description, SqlDecimal price, SqlBoolean spicy, SqlBoolean vegetarian)
         {
             Category = catergory;
             Subcategory = subcategory;

@@ -12,6 +12,8 @@ namespace Mario_Data_Conversion_Tool
 {
     class MarioPizzaBodemsConverter
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         String fileName;
 
         public MarioPizzaBodemsConverter(string fileName)
@@ -21,6 +23,10 @@ namespace Mario_Data_Conversion_Tool
 
         public void ReadFile()
         {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
             ExcelPackage xlPackage = new ExcelPackage(new FileInfo(fileName));
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
@@ -52,7 +58,7 @@ namespace Mario_Data_Conversion_Tool
                 }
                 //System.Console.WriteLine(tempName + " " + tempDiameter + " " + tempDescription +" " + decimal.Parse(tempFee) +" " + tempAvailable);
                 pizzaBodems.Add(new PizzaBodem(tempName, tempDiameter, tempDescription, decimal.Parse(tempFee, CultureInfo.InvariantCulture), tempAvailable));
-                
+                log.Info("Succesfully added line:" + rowNum);
                 tempName = "";
                 tempDiameter = "";
                 tempDescription = "";
@@ -60,15 +66,6 @@ namespace Mario_Data_Conversion_Tool
                 tempAvailable = false;
 
             }
-            foreach (PizzaBodem pizzaBodem in pizzaBodems)
-            {
-                System.Console.WriteLine("Name: " + pizzaBodem.Name);
-                System.Console.WriteLine("Diameter: " + pizzaBodem.Diameter);
-                System.Console.WriteLine("Description: " + pizzaBodem.Description);
-                System.Console.WriteLine("Fee: " + pizzaBodem.Fee);
-                System.Console.WriteLine("Available: " + pizzaBodem.Available);
-            }
-
         }
     }
 }

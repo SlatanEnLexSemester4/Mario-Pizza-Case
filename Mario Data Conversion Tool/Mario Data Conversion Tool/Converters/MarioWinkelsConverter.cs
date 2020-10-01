@@ -10,6 +10,8 @@ namespace Mario_Data_Conversion_Tool
 {
     class MarioWinkelsConverter
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         String fileName;
         int headerLines = 3;
 
@@ -20,6 +22,10 @@ namespace Mario_Data_Conversion_Tool
 
         public void ReadFile() 
         {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
             string line;
             int winkelCounter = 0;
             string tempName = "";
@@ -77,6 +83,7 @@ namespace Mario_Data_Conversion_Tool
                     case 7:
                         winkelCounter = 0;
                         winkels.Add(new Winkel(tempName, tempStreet, tempNumber, tempCity, tempCountryCode, tempZipcode, tempPhoneNumber));
+                        log.Info("Succesfully added line:" + tempName);
                         tempName = "";
                         tempStreet = "";
                         tempNumber = "";
@@ -95,16 +102,6 @@ namespace Mario_Data_Conversion_Tool
             winkels.Add(new Winkel(tempName, tempStreet, tempNumber, tempCity, tempCountryCode, tempZipcode, tempPhoneNumber));
 
             file.Close();
-            // Suspend the screen.  
-            foreach (Winkel winkel in winkels){
-                System.Console.WriteLine(winkel.Name + " " + winkel.Streetname + " " + winkel.Number + " " + winkel.City + " " + winkel.Countrycode + " " + winkel.Zipcode + " " + winkel.Telephonenumber);
-            }
         }
-
-        public void TestFunction() {
-            Winkel bla = new Winkel("Winkel 1", "Straat 1", "Nummer 1", "Stad 1", "Landcode 1", "Postcode 1", "Telefoonnummer 1");
-            Console.WriteLine(bla.Name);
-
-         }
     }
 }

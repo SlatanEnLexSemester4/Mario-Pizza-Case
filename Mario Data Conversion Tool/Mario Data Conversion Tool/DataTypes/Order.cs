@@ -20,18 +20,18 @@ namespace Mario_Data_Conversion_Tool.DataTypes
         public SqlString Product { get; private set; }
         public SqlString PizzaCrust { get; private set; }
         public SqlString PizzaSauce { get; private set; }
-        public SqlMoney Price { get; private set; }
-        public SqlMoney DeliveryCost { get; private set; }
+        public SqlDecimal Price { get; private set; }
+        public SqlDecimal DeliveryCost { get; private set; }
         public SqlDecimal Amount { get; private set; }
         public SqlString ExtraIngredients { get; private set; }
-        public SqlMoney ExtraIngredientPrice { get; private set; }
-        public SqlMoney LinePrice { get; private set; }
-        public SqlMoney TotalPrice { get; private set; }
+        public SqlDecimal ExtraIngredientPrice { get; private set; }
+        public SqlDecimal LinePrice { get; private set; }
+        public SqlDecimal TotalPrice { get; private set; }
         public SqlString UsedVoucher { get; private set; }
-        public SqlMoney VoucherDiscount { get; private set; }
-        public SqlMoney TotalPriceAfterDiscount { get; private set; }
+        public SqlDecimal VoucherDiscount { get; private set; }
+        public SqlDecimal TotalPriceAfterDiscount { get; private set; }
 
-        public Order(SqlString storeName, SqlString customerName, SqlString phoneNumber, SqlString email, SqlString address, SqlString city, SqlDateTime orderDate, SqlString deliveryType, SqlDateTime deliveryDate, SqlString deliveryTime, SqlString product, SqlString pizzaCrust, SqlString pizzaSauce, SqlMoney price, SqlMoney deliveryCost, SqlDecimal amount, SqlString extraIngredients, SqlMoney extraIngredientPrice, SqlMoney linePrice, SqlMoney totalPrice, SqlString usedVoucher, SqlMoney voucherDiscount, SqlMoney totalPriceAfterDiscount)
+        public Order(SqlString storeName, SqlString customerName, SqlString phoneNumber, SqlString email, SqlString address, SqlString city, SqlDateTime orderDate, SqlString deliveryType, SqlDateTime deliveryDate, SqlString deliveryTime, SqlString product, SqlString pizzaCrust, SqlString pizzaSauce, SqlDecimal price, SqlDecimal deliveryCost, SqlDecimal amount, SqlString extraIngredients, SqlDecimal extraIngredientPrice, SqlDecimal linePrice, SqlDecimal totalPrice, SqlString usedVoucher, SqlDecimal voucherDiscount, SqlDecimal totalPriceAfterDiscount)
         {
             StoreName = storeName;
             CustomerName = customerName;
