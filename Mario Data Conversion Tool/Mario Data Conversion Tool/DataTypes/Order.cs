@@ -13,9 +13,9 @@ namespace Mario_Data_Conversion_Tool.DataTypes
         public SqlString Email { get; private set; }
         public SqlString Address { get; private set; }
         public SqlString City { get; private set; }
-        public SqlDateTime OrderDate { get; private set; }
+        public DateTime OrderDate { get; private set; }
         public SqlString DeliveryType { get; private set; }
-        public SqlDateTime DeliveryDate { get; private set; }
+        public DateTime DeliveryDate { get; private set; }
         public SqlString DeliveryTime { get; private set; }
         public SqlString Product { get; private set; }
         public SqlString PizzaCrust { get; private set; }
@@ -31,7 +31,7 @@ namespace Mario_Data_Conversion_Tool.DataTypes
         public SqlDecimal VoucherDiscount { get; private set; }
         public SqlDecimal TotalPriceAfterDiscount { get; private set; }
 
-        public Order(SqlString storeName, SqlString customerName, SqlString phoneNumber, SqlString email, SqlString address, SqlString city, SqlDateTime orderDate, SqlString deliveryType, SqlDateTime deliveryDate, SqlString deliveryTime, SqlString product, SqlString pizzaCrust, SqlString pizzaSauce, SqlDecimal price, SqlDecimal deliveryCost, SqlDecimal amount, SqlString extraIngredients, SqlDecimal extraIngredientPrice, SqlDecimal linePrice, SqlDecimal totalPrice, SqlString usedVoucher, SqlDecimal voucherDiscount, SqlDecimal totalPriceAfterDiscount)
+        public Order(SqlString storeName, SqlString customerName, SqlString phoneNumber, SqlString email, SqlString address, SqlString city, DateTime orderDate, SqlString deliveryType, DateTime deliveryDate, SqlString deliveryTime, SqlString product, SqlString pizzaCrust, SqlString pizzaSauce, SqlDecimal price, SqlDecimal deliveryCost, SqlDecimal amount, SqlString extraIngredients, SqlDecimal extraIngredientPrice, SqlDecimal linePrice, SqlDecimal totalPrice, SqlString usedVoucher, SqlDecimal voucherDiscount, SqlDecimal totalPriceAfterDiscount)
         {
             StoreName = storeName;
             CustomerName = customerName;

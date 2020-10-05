@@ -12,6 +12,7 @@ namespace Mario_Data_Conversion_Tool
     class MarioPizzaIngredientenConverter
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog logwarn = log4net.LogManager.GetLogger("logWarn");
 
         String fileName;
 
@@ -20,7 +21,16 @@ namespace Mario_Data_Conversion_Tool
             this.fileName = fileName;
         }
 
-        public void ReadFile()
+        public void Convert()
+        {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
+            List<PizzaIngredient> pizzaIngredienten = ReadFile();
+        }
+
+        public List<PizzaIngredient> ReadFile()
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -41,6 +51,7 @@ namespace Mario_Data_Conversion_Tool
             decimal tempAmount = 0;
             string tempIngredientName = "";
             string tempPizzaSauceStandard = "";
+
             List<PizzaIngredient> pizzaIngredienten = new List<PizzaIngredient>();
 
             var myWorksheet = xlPackage.Workbook.Worksheets.First(); //select sheet here
@@ -114,6 +125,7 @@ namespace Mario_Data_Conversion_Tool
                 tempPizzaSauceStandard = "";
 
             }
+            return pizzaIngredienten;
         }
     }
 }

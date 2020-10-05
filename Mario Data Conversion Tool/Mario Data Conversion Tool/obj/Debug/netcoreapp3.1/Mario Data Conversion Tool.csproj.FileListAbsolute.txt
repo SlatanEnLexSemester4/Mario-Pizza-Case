@@ -36,4 +36,10 @@ C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\
 C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
 C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.csproj.CoreCompileInputs.cache

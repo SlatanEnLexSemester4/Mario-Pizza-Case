@@ -13,6 +13,7 @@ namespace Mario_Data_Conversion_Tool
     class MarioPizzaBodemsConverter
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog logwarn = log4net.LogManager.GetLogger("logWarn");
 
         String fileName;
 
@@ -21,7 +22,16 @@ namespace Mario_Data_Conversion_Tool
             this.fileName = fileName;
         }
 
-        public void ReadFile()
+        public void Convert()
+        {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
+            List<PizzaBodem> pizzaBodems = ReadFile();
+        }
+
+        public List<PizzaBodem> ReadFile()
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -66,6 +76,7 @@ namespace Mario_Data_Conversion_Tool
                 tempAvailable = false;
 
             }
+            return pizzaBodems;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Mario_Data_Conversion_Tool
     class MarioWinkelsConverter
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog logwarn = log4net.LogManager.GetLogger("logWarn");
 
         String fileName;
         int headerLines = 3;
@@ -20,7 +21,16 @@ namespace Mario_Data_Conversion_Tool
             this.fileName = fileName;
         }
 
-        public void ReadFile() 
+        public void Convert()
+        {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
+            List<Winkel> winkels = ReadFile();
+        }
+
+        public List<Winkel> ReadFile() 
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -102,6 +112,7 @@ namespace Mario_Data_Conversion_Tool
             winkels.Add(new Winkel(tempName, tempStreet, tempNumber, tempCity, tempCountryCode, tempZipcode, tempPhoneNumber));
 
             file.Close();
+            return winkels;
         }
     }
 }

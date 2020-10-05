@@ -6,11 +6,16 @@ namespace Mario_Data_Conversion_Tool
     class Program
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog logwarn = log4net.LogManager.GetLogger("logWarn");
+
         static void Main(string[] args)
         {
             log.Info("- - - - -");
             log.Info("Running " + System.AppDomain.CurrentDomain.FriendlyName);
             log.Info("- - - - -");
+            logwarn.Info("- - - - -");
+            logwarn.Info("Running " + System.AppDomain.CurrentDomain.FriendlyName);
+            logwarn.Info("- - - - -");
 
             Console.OutputEncoding = Encoding.UTF8;
 
@@ -24,6 +29,10 @@ namespace Mario_Data_Conversion_Tool
                                             "C:\\Users\\lex\\Downloads\\MarioData\\MarioOrderData03_10000.csv",
                                             "C:\\Users\\lex\\Downloads\\MarioData\\MarioOrderData04_10000.csv"};
 
+            log.Info("- - - - -");
+            log.Info("Succesfuly loaded files");
+            log.Info("- - - - -");
+
             MarioWinkelsConverter winkelConverter = new MarioWinkelsConverter(marioWinkelsFile);
             MarioExtraIngredientenConverter extraIngredientConverter = new MarioExtraIngredientenConverter(extraIngredientenFile);
             MarioPizzaBodemsConverter pizzaBodemsConverter = new MarioPizzaBodemsConverter(pizzaBodemsFile);
@@ -31,18 +40,17 @@ namespace Mario_Data_Conversion_Tool
             MarioPizzaIngredientenConverter pizzaIngredientenConverter = new MarioPizzaIngredientenConverter(pizzaIngredientenFile);
             MarioOrderDataConverter orderDataConvertor = new MarioOrderDataConverter(orderDataFiles);
 
-            
-            winkelConverter.ReadFile();
 
-            extraIngredientConverter.ReadFile();
+            //winkelConverter.Convert();
+            extraIngredientConverter.Convert();
+            //pizzaBodemsConverter.Convert();
+            //overigeProductenConverter.Convert();
+            //pizzaIngredientenConverter.Convert();
+            orderDataConvertor.Convert();
 
-            pizzaBodemsConverter.ReadFile();
-
-            overigeProductenConverter.ReadFile();
-
-            pizzaIngredientenConverter.ReadFile();
-
-            orderDataConvertor.ReadFiles();
+            log.Info("- - - - -");
+            log.Info("Ending : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
 
         }
     }

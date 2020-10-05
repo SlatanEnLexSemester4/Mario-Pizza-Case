@@ -12,6 +12,7 @@ namespace Mario_Data_Conversion_Tool
     class MarioOverigeProductenConverter
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog logwarn = log4net.LogManager.GetLogger("logWarn");
 
         String fileName;
 
@@ -20,7 +21,16 @@ namespace Mario_Data_Conversion_Tool
             this.fileName = fileName;
         }
 
-        public void ReadFile()
+        public void Convert()
+        {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
+            List<OverigProduct> overigeProducten = ReadFile();
+        }
+
+        public List<OverigProduct> ReadFile()
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -84,6 +94,7 @@ namespace Mario_Data_Conversion_Tool
                 tempVegetarian = false;
 
             }
+            return overigeProducten;
 
         }
     }
