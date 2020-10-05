@@ -4,6 +4,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices;
+using Mario_Data_Conversion_Tool.Converters;
 
 namespace Mario_Data_Conversion_Tool
 {
@@ -71,6 +73,31 @@ namespace Mario_Data_Conversion_Tool
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
             log.Info("- - - - -");
 
+            //Drop table and create new one
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
+            
+            try
+            {
+
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = "DROP TABLE IF EXISTS dbo.ExtraIngredienten";
+                command.ExecuteNonQuery();
+                command.CommandText = "CREATE TABLE dbo.ExtraIngredienten (Ingredient varchar(200), ExtraPrice varchar(200))";
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
+
+
             foreach(ExtraIngredient extraIngredient in extraIngredienten)
             {
                 ExecuteQuery(extraIngredient.Name.ToString(), extraIngredient.ExtraPrice.ToString());
@@ -79,10 +106,7 @@ namespace Mario_Data_Conversion_Tool
         }
         private void ExecuteQuery(string ingredient, string price)
         {
-            string Server = "localhost";
-            string Database = "ShadowDB";
-
-            var conn = new SqlConnection("Data Source=" + Server + ";Initial Catalog=" + Database + ";User ID=mario;Password=mario");
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
 
             String query = "INSERT INTO dbo.ExtraIngredienten (Ingredient,ExtraPrice) VALUES (@Ingredient,@ExtraPrice)";
 

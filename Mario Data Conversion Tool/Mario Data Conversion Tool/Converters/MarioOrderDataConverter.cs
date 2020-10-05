@@ -1,4 +1,5 @@
-﻿using Mario_Data_Conversion_Tool.DataTypes;
+﻿using Mario_Data_Conversion_Tool.Converters;
+using Mario_Data_Conversion_Tool.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -65,28 +66,13 @@ namespace Mario_Data_Conversion_Tool
                 {
                     var values = line.Split(";", StringSplitOptions.None);
 
-                    DateTime tempOrderDate;
                     string tempDeliveryType = "";
-                    DateTime tempDeliveryDate;
-                    decimal tempPrice;
-                    decimal tempDeliveryCost;
-                    decimal tempAmount;
-                    decimal tempExtraIngredientPrice;
-                    decimal tempLinePrice;
-                    decimal tempTotalPrice;
-                    decimal tempVoucherDiscount;
-                    decimal tempPriceAfterDiscount;
 
                     if (values.Length != 1)
                     {
                         if (values[6] != "")
                         {
-                            tempOrderDate = DateTime.Parse(values[6], cultureinfo);
-
-                        }
-                        else
-                        {
-                            tempOrderDate = DateTime.Parse("01/01/1800");
+                            values[6] = DateTime.Parse(values[6], cultureinfo).ToString();
                         }
                         if (values[7] == "Bezorgen")
                         {
@@ -98,92 +84,50 @@ namespace Mario_Data_Conversion_Tool
                         }
                         if (values[8] != "")
                         {
-                            tempDeliveryDate = DateTime.Parse(values[8], cultureinfo);
+                            values[8] = DateTime.Parse(values[8], cultureinfo).ToString();
 
-                        }
-                        else
-                        {
-                            tempDeliveryDate = DateTime.Parse("01/01/1800");
-                        }                        
+                        }                  
                         if (values[13] != "")
                         {
                             values[13] = new string(values[13].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
-                            tempPrice = decimal.Parse(values[13], cultureinfo);
-                        }
-                        else
-                        {
-                            tempPrice = 0;
+                            values[13] = decimal.Parse(values[13], cultureinfo).ToString();
                         }
 
                         if (values[14] != "" && values[14] != " ")
                         {
                             values[14] = new string(values[14].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
-                            tempDeliveryCost = decimal.Parse(values[14], cultureinfo);
-                        }
-                        else
-                        {
-                            tempDeliveryCost = 0;
-                        }
-
-                        if (values[15] != "")
-                        {
-                            tempAmount = decimal.Parse(values[15]);
-                        }
-                        else
-                        {
-                            tempAmount = 0;
+                            values[14] = decimal.Parse(values[14], cultureinfo).ToString();
                         }
 
                         if (values[17] != "")
                         {
                             values[17] = new string(values[17].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
-                            tempExtraIngredientPrice = decimal.Parse(values[17], cultureinfo);
-                        }
-                        else
-                        {
-                            tempExtraIngredientPrice = 0;
+                            values[17] = decimal.Parse(values[17], cultureinfo).ToString();
                         }
 
                         if (values[18] != "")
                         {
                             values[18] = new string(values[18].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
-                            tempLinePrice = decimal.Parse(values[18], cultureinfo);
-                        }
-                        else
-                        {
-                            tempLinePrice = 0;
+                            values[18] = decimal.Parse(values[18], cultureinfo).ToString();
                         }
 
                         if (values[19] != "")
                         {
                             values[19] = new string(values[19].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
-                            tempTotalPrice = decimal.Parse(values[19], cultureinfo);
-                        }
-                        else
-                        {
-                            tempTotalPrice = 0;
+                            values[19] = decimal.Parse(values[19], cultureinfo).ToString();
                         }
 
                         if (values[21] != "")
                         {
                             values[21] = new string(values[21].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
-                            tempVoucherDiscount = decimal.Parse(values[21], cultureinfo);
-                        }
-                        else
-                        {
-                            tempVoucherDiscount = 0;
+                            values[21] = decimal.Parse(values[21], cultureinfo).ToString();
                         }
 
                         if (values[22] != "")
                         {
                             values[22] = new string(values[22].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
-                            tempPriceAfterDiscount = decimal.Parse(values[22], cultureinfo);
+                            values[22] = decimal.Parse(values[22], cultureinfo).ToString();
                         }
-                        else
-                        {
-                            tempPriceAfterDiscount = 0;
-                        }
-
 
                         orders.Add(new Order(values[0],
                             values[1],
@@ -191,23 +135,23 @@ namespace Mario_Data_Conversion_Tool
                             values[3],
                             values[4],
                             values[5],
-                            tempOrderDate,
+                            values[6],
                             tempDeliveryType,
-                            tempDeliveryDate,
+                            values[8],
                             values[9],
                             values[10],
                             values[11],
                             values[12],
-                            tempPrice,
-                            tempDeliveryCost,
-                            tempAmount,
+                            values[13],
+                            values[14],
+                            values[15],
                             values[16],
-                            tempExtraIngredientPrice,
-                            tempLinePrice,
-                            tempTotalPrice,
+                            values[17],
+                            values[18],
+                            values[19],
                             values[20],
-                            tempVoucherDiscount,
-                            tempPriceAfterDiscount));
+                            values[21],
+                            values[22]));
                         log.Info("Succesfully added line:" + lineCounter);
                     }
                     lineCounter++;
@@ -224,6 +168,30 @@ namespace Mario_Data_Conversion_Tool
             log.Info("- - - - -");
             CultureInfo cultureinfo = new System.Globalization.CultureInfo("nl-NL");
 
+            //Drop table and create new one
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
+
+            try
+            {
+
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = "DROP TABLE IF EXISTS dbo.MarioOrderData";
+                command.ExecuteNonQuery();
+                command.CommandText = "CREATE TABLE dbo.MarioOrderData (Winkelnaam varchar(200),Klantnaam varchar(200),Telefoon varchar(200),Email varchar(200),Adres varchar(200),Woonplaats varchar(200),Besteldatum varchar(200),AfleverType varchar(200),AfleverDatum varchar(200),AfleverMoment varchar(200),Product varchar(200),PizzaBodem varchar(200),PizzaSaus varchar(200),Prijs varchar(200),Bezorgkosten varchar(200),Aantal varchar(200),ExtraIngredienten varchar(200),PrijsExtraIngredient varchar(200),Regelprijs varchar(200),Totaalprijs varchar(200),GebruikteCoupon varchar(200),CouponKorting varchar(200),TeBetalen varchar(200))";
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
+
             foreach (Order order in orders)
             {
                 ExecuteQuery(order.StoreName.ToString(), 
@@ -232,9 +200,9 @@ namespace Mario_Data_Conversion_Tool
                     order.Email.ToString(), 
                     order.Address.ToString(),
                     order.City.ToString(),
-                    order.OrderDate.ToString("u", cultureinfo),
+                    order.OrderDate.ToString(),
                     order.DeliveryType.ToString(),
-                    order.DeliveryDate.ToString("u", cultureinfo),
+                    order.DeliveryDate.ToString(),
                     order.DeliveryTime.ToString(),
                     order.Product.ToString(),
                     order.PizzaCrust.ToString(),
@@ -277,10 +245,7 @@ namespace Mario_Data_Conversion_Tool
             string VoucherDiscount,
             string TotalPriceAfterDiscount)
         {
-            string Server = "localhost";
-            string Database = "ShadowDB";
-
-            var conn = new SqlConnection("Data Source=" + Server + ";Initial Catalog=" + Database + ";User ID=mario;Password=mario");
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
 
             String query = "INSERT INTO dbo.MarioOrderData (Winkelnaam,Klantnaam,Telefoon,Email,Adres,Woonplaats,Besteldatum,AfleverType,AfleverDatum,AfleverMoment,Product,PizzaBodem,PizzaSaus,Prijs,Bezorgkosten,Aantal,ExtraIngredienten,PrijsExtraIngredient,Regelprijs,Totaalprijs,GebruikteCoupon,CouponKorting,TeBetalen) VALUES (@Winkelnaam,@Klantnaam,@Telefoon,@Email,@Adres,@Woonplaats,@Besteldatum,@AfleverType,@AfleverDatum,@AfleverMoment,@Product,@PizzaBodem,@PizzaSaus,@Prijs,@Bezorgkosten,@Aantal,@ExtraIngredienten,@PrijsExtraIngredient,@Regelprijs,@Totaalprijs,@GebruikteCoupon,@CouponKorting,@TeBetalen)";
             log.Info(OrderDate + " " + DeliveryDate + " " + DeliveryTime);

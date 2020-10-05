@@ -4947,23 +4947,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lex\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\lexda\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lex\\source\\repos\\Mario Data Conversion Tool\\Mario Data Conversion Tool\\Mario Data Conversion Tool.csproj",
+      "projectUniqueName": "C:\\temp\\Mario Data Conversion Tool\\Mario Data Conversion Tool\\Mario Data Conversion Tool.csproj",
       "projectName": "Mario Data Conversion Tool",
-      "projectPath": "C:\\Users\\lex\\source\\repos\\Mario Data Conversion Tool\\Mario Data Conversion Tool\\Mario Data Conversion Tool.csproj",
-      "packagesPath": "C:\\Users\\lex\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lex\\source\\repos\\Mario Data Conversion Tool\\Mario Data Conversion Tool\\obj\\",
+      "projectPath": "C:\\temp\\Mario Data Conversion Tool\\Mario Data Conversion Tool\\Mario Data Conversion Tool.csproj",
+      "packagesPath": "C:\\Users\\lexda\\.nuget\\packages\\",
+      "outputPath": "C:\\temp\\Mario Data Conversion Tool\\Mario Data Conversion Tool\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\lex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lexda\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

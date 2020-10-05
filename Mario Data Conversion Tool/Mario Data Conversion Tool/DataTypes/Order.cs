@@ -13,25 +13,25 @@ namespace Mario_Data_Conversion_Tool.DataTypes
         public SqlString Email { get; private set; }
         public SqlString Address { get; private set; }
         public SqlString City { get; private set; }
-        public DateTime OrderDate { get; private set; }
+        public SqlString OrderDate { get; private set; }
         public SqlString DeliveryType { get; private set; }
-        public DateTime DeliveryDate { get; private set; }
+        public SqlString DeliveryDate { get; private set; }
         public SqlString DeliveryTime { get; private set; }
         public SqlString Product { get; private set; }
         public SqlString PizzaCrust { get; private set; }
         public SqlString PizzaSauce { get; private set; }
-        public SqlDecimal Price { get; private set; }
-        public SqlDecimal DeliveryCost { get; private set; }
-        public SqlDecimal Amount { get; private set; }
+        public SqlString Price { get; private set; }
+        public SqlString DeliveryCost { get; private set; }
+        public SqlString Amount { get; private set; }
         public SqlString ExtraIngredients { get; private set; }
-        public SqlDecimal ExtraIngredientPrice { get; private set; }
-        public SqlDecimal LinePrice { get; private set; }
-        public SqlDecimal TotalPrice { get; private set; }
+        public SqlString ExtraIngredientPrice { get; private set; }
+        public SqlString LinePrice { get; private set; }
+        public SqlString TotalPrice { get; private set; }
         public SqlString UsedVoucher { get; private set; }
-        public SqlDecimal VoucherDiscount { get; private set; }
-        public SqlDecimal TotalPriceAfterDiscount { get; private set; }
+        public SqlString VoucherDiscount { get; private set; }
+        public SqlString TotalPriceAfterDiscount { get; private set; }
 
-        public Order(SqlString storeName, SqlString customerName, SqlString phoneNumber, SqlString email, SqlString address, SqlString city, DateTime orderDate, SqlString deliveryType, DateTime deliveryDate, SqlString deliveryTime, SqlString product, SqlString pizzaCrust, SqlString pizzaSauce, SqlDecimal price, SqlDecimal deliveryCost, SqlDecimal amount, SqlString extraIngredients, SqlDecimal extraIngredientPrice, SqlDecimal linePrice, SqlDecimal totalPrice, SqlString usedVoucher, SqlDecimal voucherDiscount, SqlDecimal totalPriceAfterDiscount)
+        public Order(SqlString storeName, SqlString customerName, SqlString phoneNumber, SqlString email, SqlString address, SqlString city, SqlString orderDate, SqlString deliveryType, SqlString deliveryDate, SqlString deliveryTime, SqlString product, SqlString pizzaCrust, SqlString pizzaSauce, SqlString price, SqlString deliveryCost, SqlString amount, SqlString extraIngredients, SqlString extraIngredientPrice, SqlString linePrice, SqlString totalPrice, SqlString usedVoucher, SqlString voucherDiscount, SqlString totalPriceAfterDiscount)
         {
             StoreName = storeName;
             CustomerName = customerName;

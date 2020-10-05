@@ -43,3 +43,50 @@ C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\
 C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\lex\source\repos\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.csproj.CoreCompileInputs.cache
+C:\GitHub\Mario-Pizza-Case\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.dll
+C:\GitHub\Mario-Pizza-Case\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.pdb
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.pdb
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.csprojAssemblyReference.cache
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.AssemblyInfoInputs.cache
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.AssemblyInfo.cs
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.csproj.CoreCompileInputs.cache
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Mario Data Conversion Tool.exe
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\log4net.config
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Mario Data Conversion Tool.deps.json
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Mario Data Conversion Tool.runtimeconfig.json
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Mario Data Conversion Tool.runtimeconfig.dev.json
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Mario Data Conversion Tool.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Mario Data Conversion Tool.pdb
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\EPPlus.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\log4net.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.csproj.CopyComplete
+C:\temp\Mario Data Conversion Tool\Mario Data Conversion Tool\obj\Debug\netcoreapp3.1\Mario Data Conversion Tool.genruntimeconfig.cache
