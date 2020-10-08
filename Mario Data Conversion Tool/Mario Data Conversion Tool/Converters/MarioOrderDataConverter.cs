@@ -72,7 +72,7 @@ namespace Mario_Data_Conversion_Tool
                     {
                         if (values[6] != "")
                         {
-                            values[6] = DateTime.Parse(values[6], cultureinfo).ToString();
+                            values[6] = DateTime.Parse(values[6], cultureinfo).ToString("yyyy-MM-dd");
                         }
                         if (values[7] == "Bezorgen")
                         {
@@ -84,7 +84,7 @@ namespace Mario_Data_Conversion_Tool
                         }
                         if (values[8] != "")
                         {
-                            values[8] = DateTime.Parse(values[8], cultureinfo).ToString();
+                            values[8] = DateTime.Parse(values[8], cultureinfo).ToString("yyyy-MM-dd");
 
                         }                  
                         if (values[13] != "")
@@ -166,8 +166,7 @@ namespace Mario_Data_Conversion_Tool
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
             log.Info("- - - - -");
-            CultureInfo cultureinfo = new System.Globalization.CultureInfo("nl-NL");
-
+            
             //Drop table and create new one
             SqlConnection conn = SqlConnectionMaker.ReturnConnection();
 

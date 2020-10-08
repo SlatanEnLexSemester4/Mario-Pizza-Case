@@ -1,7 +1,9 @@
-﻿using Mario_Data_Conversion_Tool.DataTypes;
+﻿using Mario_Data_Conversion_Tool.Converters;
+using Mario_Data_Conversion_Tool.DataTypes;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -28,6 +30,7 @@ namespace Mario_Data_Conversion_Tool
             log.Info("- - - - -");
 
             List<PizzaIngredient> pizzaIngredienten = ReadFile();
+            Upload(pizzaIngredienten);
         }
 
         public List<PizzaIngredient> ReadFile()
@@ -126,6 +129,104 @@ namespace Mario_Data_Conversion_Tool
 
             }
             return pizzaIngredienten;
+        }
+
+        public void Upload(List<PizzaIngredient> pizzaIngredienten)
+        {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
+            //Drop table and create new one
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
+
+            try
+            {
+
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = "DROP TABLE IF EXISTS dbo.PizzaIngredienten";
+                command.ExecuteNonQuery();
+                command.CommandText = "CREATE TABLE dbo.PizzaIngredienten (Categorie varchar(200),Subcategorie varchar(200),Productnaam varchar(200),Productomschrijving varchar(500),Prijs varchar(200),Bezorgtoeslag varchar(200),Spicy varchar(200),Vegetarisch varchar(200),Beschikbaar varchar(200),AantaalkeerIngredient varchar(200),Ingredientnaam varchar(200),PizzasausStandaard varchar(200))";
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
+
+            foreach (PizzaIngredient pizzaIngredient in pizzaIngredienten)
+            {
+
+                ExecuteQuery(pizzaIngredient.Category.ToString(),
+                    pizzaIngredient.Subcategory.ToString(),
+                    pizzaIngredient.Name.ToString(),
+                    pizzaIngredient.Description.ToString(),
+                    pizzaIngredient.Price.ToString(),
+                    pizzaIngredient.DeliveryFee.ToString(),
+                    pizzaIngredient.Spicy.ToString(),
+                    pizzaIngredient.Vegetarian.ToString(),
+                    pizzaIngredient.Availability.ToString(),
+                    pizzaIngredient.Amount.ToString(),
+                    pizzaIngredient.IngredientName.ToString(),
+                    pizzaIngredient.StandardSauce.ToString());
+            }
+
+        }
+        private void ExecuteQuery(
+            string Category,
+            string Subcategory,
+            string Name,
+            string Description,
+            string Price,
+            string DeliveryFee,
+            string Spicy,
+            string Vegetarian,
+            string Availability,
+            string Amount,
+            string IngredientName,
+            string StandardSauce)
+        {
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
+
+            String query = "INSERT INTO dbo.PizzaIngredienten (Categorie,Subcategorie,Productnaam,Productomschrijving,Prijs,Bezorgtoeslag,Spicy,Vegetarisch,Beschikbaar,AantaalkeerIngredient,Ingredientnaam,PizzasausStandaard) VALUES (@Categorie,@Subcategorie,@Productnaam,@Productomschrijving,@Prijs,@Bezorgtoeslag,@Spicy,@Vegetarisch,@Beschikbaar,@AantaalkeerIngredient,@Ingredientnaam,@PizzasausStandaard)";
+            try
+            {
+
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = query;
+
+                command.Parameters.AddWithValue("@Categorie ", Category);
+                command.Parameters.AddWithValue("@Subcategorie ", Subcategory);
+                command.Parameters.AddWithValue("@Productnaam ", Name);
+                command.Parameters.AddWithValue("@Productomschrijving ", Description);
+                command.Parameters.AddWithValue("@Prijs ", Price);
+                command.Parameters.AddWithValue("@Bezorgtoeslag ", DeliveryFee);
+                command.Parameters.AddWithValue("@Spicy ", Spicy);
+                command.Parameters.AddWithValue("@Vegetarisch ", Vegetarian);
+                command.Parameters.AddWithValue("@Beschikbaar ", Availability);
+                command.Parameters.AddWithValue("@AantaalkeerIngredient ", Amount);
+                command.Parameters.AddWithValue("@Ingredientnaam ", IngredientName);
+                command.Parameters.AddWithValue("@PizzasausStandaard ", StandardSauce);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
         }
     }
 }

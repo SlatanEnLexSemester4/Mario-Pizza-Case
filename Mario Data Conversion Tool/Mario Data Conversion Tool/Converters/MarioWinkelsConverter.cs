@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Mario_Data_Conversion_Tool.Converters;
 using Mario_Data_Conversion_Tool.DataTypes;
 
 namespace Mario_Data_Conversion_Tool
@@ -28,6 +30,7 @@ namespace Mario_Data_Conversion_Tool
             log.Info("- - - - -");
 
             List<Winkel> winkels = ReadFile();
+            Upload(winkels);
         }
 
         public List<Winkel> ReadFile() 
@@ -113,6 +116,89 @@ namespace Mario_Data_Conversion_Tool
 
             file.Close();
             return winkels;
+        }
+
+        public void Upload(List<Winkel> winkels)
+        {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
+            //Drop table and create new one
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
+
+            try
+            {
+
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = "DROP TABLE IF EXISTS dbo.Winkels";
+                command.ExecuteNonQuery();
+                command.CommandText = "CREATE TABLE dbo.Winkels (Naam varchar(200),Straat varchar(200),Nummer varchar(200),Plaats varchar(200),LandCode varchar(200),Postcode varchar(200),Telefoon varchar(200))";
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
+
+            foreach (Winkel winkel in winkels)
+            {
+
+                ExecuteQuery(winkel.Name.ToString(),
+                    winkel.Streetname.ToString(),
+                    winkel.Number.ToString(),
+                    winkel.City.ToString(),
+                    winkel.Countrycode.ToString(),
+                    winkel.Zipcode.ToString(),
+                    winkel.Telephonenumber.ToString());
+            }
+
+        }
+        private void ExecuteQuery(
+            string Name,
+            string Streetname,
+            string Number,
+            string City,
+            string Countrycode,
+            string Zipcode,
+            string Telephonenumber)
+        {
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
+
+            String query = "INSERT INTO dbo.Winkels (Naam,Straat,Nummer,Plaats,LandCode,Postcode,Telefoon) VALUES (@Naam,@Straat,@Nummer,@Plaats,@LandCode,@Postcode,@Telefoon)";
+            try
+            {
+
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = query;
+
+                command.Parameters.AddWithValue("@Naam ", Name);
+                command.Parameters.AddWithValue("@Straat ", Streetname);
+                command.Parameters.AddWithValue("@Nummer ", Number);
+                command.Parameters.AddWithValue("@Plaats ", City);
+                command.Parameters.AddWithValue("@LandCode ", Countrycode);
+                command.Parameters.AddWithValue("@Postcode ", Zipcode);
+                command.Parameters.AddWithValue("@Telefoon ", Telephonenumber);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
         }
     }
 }

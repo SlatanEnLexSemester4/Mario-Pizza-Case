@@ -15,9 +15,9 @@ namespace Mario_Data_Conversion_Tool.DataTypes
         public SqlBoolean Spicy { get; private set; }
         public SqlBoolean Vegetarian { get; private set; }
 
-        public OverigProduct(SqlString catergory, SqlString subcategory, SqlString name, SqlString description, SqlDecimal price, SqlBoolean spicy, SqlBoolean vegetarian)
+        public OverigProduct(SqlString category, SqlString subcategory, SqlString name, SqlString description, SqlDecimal price, SqlBoolean spicy, SqlBoolean vegetarian)
         {
-            Category = catergory;
+            Category = category;
             Subcategory = subcategory;
             Name = name;
             Description = description;

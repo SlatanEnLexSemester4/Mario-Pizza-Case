@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mario_Data_Conversion_Tool.Converters;
+using System;
 using System.Text;
 
 namespace Mario_Data_Conversion_Tool
@@ -19,15 +20,16 @@ namespace Mario_Data_Conversion_Tool
 
             Console.OutputEncoding = Encoding.UTF8;
 
-            String marioWinkelsFile = "C:\\Users\\lex\\Downloads\\MarioData\\Winkels Mario.txt";
-            String extraIngredientenFile = "C:\\Users\\lex\\Downloads\\MarioData\\Extra Ingredienten.csv";
-            String pizzaBodemsFile = "C:\\Users\\lex\\Downloads\\MarioData\\pizzabodems.xlsx";
-            String overigeProductenFile = "C:\\Users\\lex\\Downloads\\MarioData\\Overige producten.xlsx";
-            String pizzaIngredientenFile = "C:\\Users\\lex\\Downloads\\MarioData\\pizza_ingredienten.xlsx";
-            String[] orderDataFiles = {"C:\\Users\\lex\\Downloads\\MarioData\\MarioOrderData01_10000.csv",
-                                            "C:\\Users\\lex\\Downloads\\MarioData\\MarioOrderData02_10000.csv",
-                                            "C:\\Users\\lex\\Downloads\\MarioData\\MarioOrderData03_10000.csv",
-                                            "C:\\Users\\lex\\Downloads\\MarioData\\MarioOrderData04_10000.csv"};
+            String marioWinkelsFile = "C:\\Temp\\MarioData\\Winkels Mario.txt";
+            String extraIngredientenFile = "C:\\Temp\\MarioData\\Extra Ingredienten.csv";
+            String pizzaBodemsFile = "C:\\Temp\\MarioData\\pizzabodems.xlsx";
+            String overigeProductenFile = "C:\\Temp\\MarioData\\Overige producten.xlsx";
+            String pizzaIngredientenFile = "C:\\Temp\\MarioData\\pizza_ingredienten.xlsx";
+            String[] orderDataFiles = {"C:\\Temp\\MarioData\\MarioOrderData01_10000.csv",
+                                            "C:\\Temp\\MarioData\\MarioOrderData02_10000.csv",
+                                            "C:\\Temp\\MarioData\\MarioOrderData03_10000.csv",
+                                            "C:\\Temp\\MarioData\\MarioOrderData04_10000.csv"};
+            String postcodeTabelFile = "C:\\Temp\\MarioData\\Postcode tabel.mdb";
 
             log.Info("- - - - -");
             log.Info("Succesfuly loaded files");
@@ -39,14 +41,16 @@ namespace Mario_Data_Conversion_Tool
             MarioOverigeProductenConverter overigeProductenConverter = new MarioOverigeProductenConverter(overigeProductenFile);
             MarioPizzaIngredientenConverter pizzaIngredientenConverter = new MarioPizzaIngredientenConverter(pizzaIngredientenFile);
             MarioOrderDataConverter orderDataConvertor = new MarioOrderDataConverter(orderDataFiles);
+            MarioPostcodeTabelConverter postcodeTabelConverter = new MarioPostcodeTabelConverter(postcodeTabelFile);
 
 
-            //winkelConverter.Convert();
+            winkelConverter.Convert();
             extraIngredientConverter.Convert();
-            //pizzaBodemsConverter.Convert();
-            //overigeProductenConverter.Convert();
-            //pizzaIngredientenConverter.Convert();
+            pizzaBodemsConverter.Convert();
+            overigeProductenConverter.Convert();
+            pizzaIngredientenConverter.Convert();
             orderDataConvertor.Convert();
+            postcodeTabelConverter.Convert();
 
             log.Info("- - - - -");
             log.Info("Ending : " + System.Reflection.MethodBase.GetCurrentMethod().Name);

@@ -1,7 +1,9 @@
-﻿using Mario_Data_Conversion_Tool.DataTypes;
+﻿using Mario_Data_Conversion_Tool.Converters;
+using Mario_Data_Conversion_Tool.DataTypes;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -28,6 +30,7 @@ namespace Mario_Data_Conversion_Tool
             log.Info("- - - - -");
 
             List<OverigProduct> overigeProducten = ReadFile();
+            Upload(overigeProducten);
         }
 
         public List<OverigProduct> ReadFile()
@@ -96,6 +99,89 @@ namespace Mario_Data_Conversion_Tool
             }
             return overigeProducten;
 
+        }
+
+        public void Upload(List<OverigProduct> overigeProducten)
+        {
+            log.Info("- - - - -");
+            log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
+            //Drop table and create new one
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
+
+            try
+            {
+
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = "DROP TABLE IF EXISTS dbo.OverigeProducten";
+                command.ExecuteNonQuery();
+                command.CommandText = "CREATE TABLE dbo.OverigeProducten (Categorie varchar(200),Subcategorie varchar(200),Productnaam varchar(200),Productomschrijving varchar(200),Prijs varchar(200),Spicy varchar(200),Vegetarisch varchar(200))";
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
+
+            foreach (OverigProduct overigProduct in overigeProducten)
+            {
+                
+                ExecuteQuery(overigProduct.Category.ToString(),
+                    overigProduct.Subcategory.ToString(),
+                    overigProduct.Name.ToString(),
+                    overigProduct.Description.ToString(),
+                    overigProduct.Price.ToString(),
+                    overigProduct.Spicy.ToString(),
+                    overigProduct.Vegetarian.ToString());
+            }
+
+        }
+        private void ExecuteQuery(
+            string Category,
+            string Subcategory,
+            string Name,
+            string Description,
+            string Price,
+            string Spicy,
+            string Vegetarian)
+        {
+            SqlConnection conn = SqlConnectionMaker.ReturnConnection();
+
+            String query = "INSERT INTO dbo.OverigeProducten (Categorie,Subcategorie,Productnaam,Productomschrijving,Prijs,Spicy,Vegetarisch) VALUES (@Categorie,@Subcategorie,@Productnaam,@Productomschrijving,@Prijs,@Spicy,@Vegetarisch)";
+            try
+            {
+
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = query;
+
+                command.Parameters.AddWithValue("@Categorie ", Category);
+                command.Parameters.AddWithValue("@Subcategorie ", Subcategory);
+                command.Parameters.AddWithValue("@Productnaam ", Name);
+                command.Parameters.AddWithValue("@Productomschrijving ", Description);
+                command.Parameters.AddWithValue("@Prijs ", Price);
+                command.Parameters.AddWithValue("@Spicy ", Spicy);
+                command.Parameters.AddWithValue("@Vegetarisch ", Vegetarian);
+                
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
         }
     }
 }

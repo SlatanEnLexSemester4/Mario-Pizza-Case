@@ -11,7 +11,7 @@ namespace Mario_Data_Conversion_Tool.Converters
 
         public static SqlConnection ReturnConnection()
         {
-            string Server = "localhost\\MSSQLSERVER01";
+            string Server = "localhost";
             string Database = "ShadowDB";
             var conn = new SqlConnection("Data Source=" + Server + ";Initial Catalog=" + Database + ";User=mario;Password=mario") ;
             return conn;
