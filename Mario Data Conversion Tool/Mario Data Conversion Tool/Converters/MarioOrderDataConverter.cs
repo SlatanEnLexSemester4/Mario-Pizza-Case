@@ -91,42 +91,49 @@ namespace Mario_Data_Conversion_Tool
                         {
                             values[13] = new string(values[13].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
                             values[13] = decimal.Parse(values[13], cultureinfo).ToString();
+                            values[13] = values[13].Replace(",", ".");
                         }
 
                         if (values[14] != "" && values[14] != " ")
                         {
                             values[14] = new string(values[14].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
                             values[14] = decimal.Parse(values[14], cultureinfo).ToString();
+                            values[14] = values[14].Replace(",", ".");
                         }
 
                         if (values[17] != "")
                         {
                             values[17] = new string(values[17].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
                             values[17] = decimal.Parse(values[17], cultureinfo).ToString();
+                            values[17] = values[17].Replace(",", ".");
                         }
 
                         if (values[18] != "")
                         {
                             values[18] = new string(values[18].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
                             values[18] = decimal.Parse(values[18], cultureinfo).ToString();
+                            values[18] = values[18].Replace(",", ".");
                         }
 
                         if (values[19] != "")
                         {
                             values[19] = new string(values[19].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
                             values[19] = decimal.Parse(values[19], cultureinfo).ToString();
+                            values[19] = values[19].Replace(",", ".");
                         }
 
                         if (values[21] != "")
                         {
                             values[21] = new string(values[21].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
                             values[21] = decimal.Parse(values[21], cultureinfo).ToString();
+                            values[21] = values[21].Replace(",", ".");
                         }
 
                         if (values[22] != "")
                         {
                             values[22] = new string(values[22].Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
                             values[22] = decimal.Parse(values[22], cultureinfo).ToString();
+                            values[22] = values[22].Replace(",", ".");
                         }
 
                         orders.Add(new Order(values[0],
