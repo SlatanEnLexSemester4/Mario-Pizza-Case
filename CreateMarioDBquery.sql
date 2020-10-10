@@ -1,10 +1,27 @@
 --CREATE DATABASE MarioDB;
 
+
+CREATE TABLE Municipality (
+ MunicipalityCode INT PRIMARY KEY,
+ "Name" VARCHAR(50)
+);
+
+CREATE TABLE Zipcode (
+ ID INT PRIMARY KEY IDENTITY,
+ Zipcode VARCHAR(10),
+ SeriesIndex INT,
+ BreakpointFrom INT,
+ BreakpointTo INT,
+ City VARCHAR(100),
+ Streetname VARCHAR(100),
+ MunicipalityCode INT REFERENCES Municipality(MunicipalityCode)
+);
+
 CREATE TABLE "Address" (
  ID INT PRIMARY KEY IDENTITY,
  Streetname VARCHAR(100),
- "Number" VARCHAR(10),
- Zipcode VARCHAR(10),
+ HouseNumber VARCHAR(10),
+ Zipcode INT REFERENCES Zipcode(ID),
  City VARCHAR(100),
  CountryCode VARCHAR(5)
 );
@@ -14,20 +31,6 @@ CREATE TABLE PaymentMethod (
  "Name" VARCHAR(50) NOT NULL UNIQUE,
 );
 
-CREATE TABLE Municipality (
- MunicipalityCode INT PRIMARY KEY IDENTITY,
- "Name" VARCHAR(50)
-);
-
-CREATE TABLE Zipcode (
- Zipcode VARCHAR(10) PRIMARY KEY,
- SeriesIndex VARCHAR(10),
- BreakpointFrom DECIMAL,
- BreakpointTo DECIMAL,
- City VARCHAR(100),
- Streetname VARCHAR(100),
- MunicipalityCode INT REFERENCES Municipality(MunicipalityCode)
-);
 
 CREATE TABLE Store (
  ID INT PRIMARY KEY IDENTITY,
@@ -36,7 +39,7 @@ CREATE TABLE Store (
  Number VARCHAR(10),
  City VARCHAR(100),
  CountryCode VARCHAR(5),
- Zipcode VARCHAR(10) REFERENCES Zipcode(Zipcode),
+ Zipcode INT REFERENCES Zipcode(ID),
  PhoneNumber VARCHAR(20)
 );
 
@@ -94,7 +97,8 @@ CREATE TABLE "Order" (
  OrderTime DATE,
  Delivery BIT,
  AddressID INT REFERENCES Address(ID),
- DeliveryTime DATETIME,
+ DeliveryDate DATE,
+ DeliveryTime TIME(0),
  DeliveryCost DECIMAL,
  VoucherID INT REFERENCES Voucher(ID),
  Tip DECIMAL,
@@ -180,4 +184,12 @@ CREATE TABLE Item (
  IngredientPropertiesID INT REFERENCES IngredientProperties(ID),
  PizzaCrustID INT REFERENCES PizzaCrust(ID),
  PizzaCrustPropertiesID INT REFERENCES PizzaCrustProperties(ID)
+);
+
+CREATE TABLE StoreAddress (
+	StreetName VARCHAR(100),
+	Number VARCHAR(10),
+	Zipcode INT REFERENCES Zipcode(ID),
+	City VARCHAR(100),
+	CountryCode VARCHAR(3)
 );
