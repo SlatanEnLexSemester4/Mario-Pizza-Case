@@ -31,9 +31,18 @@ CREATE TABLE PaymentMethod (
  "Name" VARCHAR(50) NOT NULL UNIQUE,
 );
 
+CREATE TABLE StoreAddress (
+	ID INT PRIMARY KEY IDENTITY,
+	StreetName VARCHAR(100),
+	Number VARCHAR(10),
+	Zipcode INT REFERENCES Zipcode(ID),
+	City VARCHAR(100),
+	CountryCode VARCHAR(3)
+);
 
 CREATE TABLE Store (
  ID INT PRIMARY KEY IDENTITY,
+ StoreAddressID INT REFERENCES StoreAddress(ID),
  "Name" VARCHAR(50),
  PhoneNumber VARCHAR(20)
 );
@@ -181,10 +190,3 @@ CREATE TABLE Item (
  PizzaCrustPropertiesID INT REFERENCES PizzaCrustProperties(ID)
 );
 
-CREATE TABLE StoreAddress (
-	StreetName VARCHAR(100),
-	Number VARCHAR(10),
-	Zipcode INT REFERENCES Zipcode(ID),
-	City VARCHAR(100),
-	CountryCode VARCHAR(3)
-);
