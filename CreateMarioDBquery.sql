@@ -35,11 +35,6 @@ CREATE TABLE PaymentMethod (
 CREATE TABLE Store (
  ID INT PRIMARY KEY IDENTITY,
  "Name" VARCHAR(50),
- Streetname VARCHAR(100),
- Number VARCHAR(10),
- City VARCHAR(100),
- CountryCode VARCHAR(5),
- Zipcode INT REFERENCES Zipcode(ID),
  PhoneNumber VARCHAR(20)
 );
 
