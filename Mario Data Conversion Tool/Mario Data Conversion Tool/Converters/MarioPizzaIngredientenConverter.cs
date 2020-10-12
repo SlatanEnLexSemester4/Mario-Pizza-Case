@@ -107,6 +107,10 @@ namespace Mario_Data_Conversion_Tool
                 tempAmount = decimal.Parse(myWorksheet.GetValue(rowNum, 10).ToString());
 
                 tempIngredientName = myWorksheet.GetValue(rowNum, 11).ToString();
+                if (tempIngredientName == "Chicken Kebak")
+                {
+                    tempIngredientName = "Chicken Kebab";
+                }
 
                 tempPizzaSauceStandard = myWorksheet.GetValue(rowNum, 12).ToString();
 
