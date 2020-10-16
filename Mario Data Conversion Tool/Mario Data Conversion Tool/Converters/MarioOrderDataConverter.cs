@@ -184,7 +184,7 @@ namespace Mario_Data_Conversion_Tool
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = "DROP TABLE IF EXISTS dbo.MarioOrderData";
                 command.ExecuteNonQuery();
-                command.CommandText = "CREATE TABLE dbo.MarioOrderData (Winkelnaam varchar(200),Klantnaam varchar(200),Telefoon varchar(200),Email varchar(200),Adres varchar(200),Woonplaats varchar(200),Besteldatum varchar(200),AfleverType varchar(200),AfleverDatum varchar(200),AfleverMoment varchar(200),Product varchar(200),PizzaBodem varchar(200),PizzaSaus varchar(200),Prijs varchar(200),Bezorgkosten varchar(200),Aantal varchar(200),ExtraIngredienten varchar(200),PrijsExtraIngredient varchar(200),Regelprijs varchar(200),Totaalprijs varchar(200),GebruikteCoupon varchar(200),CouponKorting varchar(200),TeBetalen varchar(200))";
+                command.CommandText = "CREATE TABLE dbo.MarioOrderData (Orderid int IDENTITY, Winkelnaam varchar(200),Klantnaam varchar(200),Telefoon varchar(200),Email varchar(200),Adres varchar(200),Woonplaats varchar(200),Besteldatum varchar(200),AfleverType varchar(200),AfleverDatum varchar(200),AfleverMoment varchar(200),Product varchar(200),PizzaBodem varchar(200),PizzaSaus varchar(200),Prijs varchar(200),Bezorgkosten varchar(200),Aantal varchar(200),ExtraIngredienten varchar(200),PrijsExtraIngredient varchar(200),Regelprijs varchar(200),Totaalprijs varchar(200),GebruikteCoupon varchar(200),CouponKorting varchar(200),TeBetalen varchar(200))";
                 command.ExecuteNonQuery();
 
             }
@@ -254,7 +254,7 @@ namespace Mario_Data_Conversion_Tool
             SqlConnection conn = SqlConnectionMaker.ReturnConnection();
 
             String query = "INSERT INTO dbo.MarioOrderData (Winkelnaam,Klantnaam,Telefoon,Email,Adres,Woonplaats,Besteldatum,AfleverType,AfleverDatum,AfleverMoment,Product,PizzaBodem,PizzaSaus,Prijs,Bezorgkosten,Aantal,ExtraIngredienten,PrijsExtraIngredient,Regelprijs,Totaalprijs,GebruikteCoupon,CouponKorting,TeBetalen) VALUES (@Winkelnaam,@Klantnaam,@Telefoon,@Email,@Adres,@Woonplaats,@Besteldatum,@AfleverType,@AfleverDatum,@AfleverMoment,@Product,@PizzaBodem,@PizzaSaus,@Prijs,@Bezorgkosten,@Aantal,@ExtraIngredienten,@PrijsExtraIngredient,@Regelprijs,@Totaalprijs,@GebruikteCoupon,@CouponKorting,@TeBetalen)";
-            log.Info(OrderDate + " " + DeliveryDate + " " + DeliveryTime);
+            log.Info(Product + PizzaCrust);
             try
             {
 
