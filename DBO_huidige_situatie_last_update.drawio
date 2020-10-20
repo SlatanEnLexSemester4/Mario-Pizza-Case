@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-10-20T12:29:18.197Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.101 Safari/537.36" etag="7tNh1bDh1554zxv0jx09" version="13.8.0" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-20T13:13:18.463Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.101 Safari/537.36" etag="e97dRRMxzb2I6wSr3SSx" version="13.8.0" type="github">
   <diagram name="Page-1" id="2ca16b54-16f6-2749-3443-fa8db7711227">
-    <mxGraphModel dx="4212" dy="2574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="3490" dy="2204" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,7 +8,7 @@
           <mxGeometry x="-590" y="-392.5" width="240" height="80" as="geometry" />
         </mxCell>
         <mxCell id="2ed32ef02a7f4228-3" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;PizzaCrust&lt;br&gt;&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;ID&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK&lt;/td&gt;&lt;td&gt;PizzaCrustPropertiesID&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Name&lt;br&gt;&lt;/td&gt;&lt;td&gt;VarChar&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
-          <mxGeometry x="-895" y="-560" width="240" height="70" as="geometry" />
+          <mxGeometry x="-882.5" y="-560" width="240" height="70" as="geometry" />
         </mxCell>
         <mxCell id="2ed32ef02a7f4228-5" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;Store&lt;br&gt;&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;ID&lt;br&gt;&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Name&lt;br&gt;&lt;/td&gt;&lt;td&gt;VarChar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;StreetName&lt;br&gt;&lt;/td&gt;&lt;td&gt;VarChar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Number&lt;br&gt;&lt;/td&gt;&lt;td&gt;VarChar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;City&lt;br&gt;&lt;/td&gt;&lt;td&gt;VarChar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;CountryCode&lt;br&gt;&lt;/td&gt;&lt;td&gt;Char(2)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK&lt;/td&gt;&lt;td&gt;AddressID&lt;br&gt;&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Phonenumber&lt;br&gt;&lt;/td&gt;&lt;td&gt;VarChar&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
           <mxGeometry x="-630" y="290" width="200" height="167" as="geometry" />
@@ -56,7 +56,7 @@
           <mxGeometry x="-330" y="390" width="220" height="180" as="geometry" />
         </mxCell>
         <mxCell id="y2381WITxYUz7QJ1ljLC-17" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;Item&lt;br&gt;&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;ID&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK&lt;/td&gt;&lt;td&gt;OrderItemID&lt;br&gt;&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK N&lt;/td&gt;&lt;td&gt;ProductID&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK N&lt;/td&gt;&lt;td&gt;&lt;span style=&quot;background-color: rgb(255 , 255 , 255)&quot;&gt;ProductPropertiesID&lt;/span&gt;&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK N&lt;/td&gt;&lt;td&gt;IngredientID&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK N&lt;/td&gt;&lt;td&gt;&lt;span style=&quot;background-color: rgb(255 , 255 , 255)&quot;&gt;IngredientPropertiesID&lt;/span&gt;&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK N&lt;/td&gt;&lt;td&gt;PizzaCrustID&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;FK N&lt;/td&gt;&lt;td&gt;&lt;span style=&quot;background-color: rgb(255 , 255 , 255)&quot;&gt;PizzaCrustPropertiesID&lt;/span&gt;&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
-          <mxGeometry x="-875" y="-450" width="200" height="170" as="geometry" />
+          <mxGeometry x="-862.5" y="-450" width="200" height="170" as="geometry" />
         </mxCell>
         <mxCell id="y2381WITxYUz7QJ1ljLC-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="y2381WITxYUz7QJ1ljLC-7" target="y2381WITxYUz7QJ1ljLC-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -77,19 +77,19 @@
             <mxPoint x="-365" y="-684" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="y2381WITxYUz7QJ1ljLC-22" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="y2381WITxYUz7QJ1ljLC-9" target="y2381WITxYUz7QJ1ljLC-17" edge="1">
+        <mxCell id="y2381WITxYUz7QJ1ljLC-22" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;endFill=0;" parent="1" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="-760" y="-373.5" as="sourcePoint" />
-            <mxPoint x="-730" y="-372.5" as="targetPoint" />
+            <mxPoint x="-774" y="-240" as="sourcePoint" />
+            <mxPoint x="-774" y="-280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="y2381WITxYUz7QJ1ljLC-23" value="" style="fontSize=12;html=1;endArrow=ERzeroToOne;endFill=1;startArrow=ERzeroToMany;startFill=1;exitX=0.006;exitY=0.427;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="1" source="y2381WITxYUz7QJ1ljLC-17" target="2ed32ef02a7f4228-3" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="-530" y="-512.5" as="sourcePoint" />
-            <mxPoint x="-790" y="-562.5" as="targetPoint" />
+            <mxPoint x="-517.5" y="-512.5" as="sourcePoint" />
+            <mxPoint x="-777.5" y="-562.5" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-920" y="-377" />
-              <mxPoint x="-920" y="-508" />
+              <mxPoint x="-907.5" y="-377" />
+              <mxPoint x="-907.5" y="-508" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -233,15 +233,15 @@
           <mxGeometry x="-630" y="490" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="NlJtgaRzAW7B0GlUagiI-2" value="&lt;div style=&quot;box-sizing: border-box ; width: 100% ; background: #e4e4e4 ; padding: 2px&quot;&gt;PizzaCrustProperties&lt;br&gt;&lt;/div&gt;&lt;table style=&quot;width: 100% ; font-size: 1em&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;ID&lt;/td&gt;&lt;td&gt;INT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Diameter&lt;br&gt;&lt;/td&gt;&lt;td&gt;VarChar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Description&lt;br&gt;&lt;/td&gt;&lt;td&gt;VarChar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Fee&lt;br&gt;&lt;/td&gt;&lt;td&gt;Decimal&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;Availability&lt;br&gt;&lt;/td&gt;&lt;td&gt;Bool&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;VersionValidFrom&lt;/td&gt;&lt;td&gt;DateTime&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;VersionValidTill&lt;/td&gt;&lt;td&gt;DateTime&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
-          <mxGeometry x="-895" y="-740" width="240" height="150" as="geometry" />
+          <mxGeometry x="-882.5" y="-740" width="240" height="150" as="geometry" />
         </mxCell>
         <mxCell id="NlJtgaRzAW7B0GlUagiI-5" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;exitX=-0.013;exitY=0.369;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="1" source="2ed32ef02a7f4228-3" target="NlJtgaRzAW7B0GlUagiI-2" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="-430" y="-542.5" as="sourcePoint" />
-            <mxPoint x="-330" y="-642.5" as="targetPoint" />
+            <mxPoint x="-417.5" y="-542.5" as="sourcePoint" />
+            <mxPoint x="-317.5" y="-642.5" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-920" y="-534" />
-              <mxPoint x="-920" y="-665" />
+              <mxPoint x="-907.5" y="-534" />
+              <mxPoint x="-907.5" y="-665" />
             </Array>
           </mxGeometry>
         </mxCell>
