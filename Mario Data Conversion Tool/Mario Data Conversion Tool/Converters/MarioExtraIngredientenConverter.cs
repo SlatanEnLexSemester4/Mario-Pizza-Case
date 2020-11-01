@@ -4,7 +4,6 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Data.SqlClient;
-using System.Runtime.InteropServices;
 using Mario_Data_Conversion_Tool.Converters;
 
 namespace Mario_Data_Conversion_Tool
@@ -22,7 +21,7 @@ namespace Mario_Data_Conversion_Tool
             this.fileName = fileName;
         }
 
-        public void Convert()
+        public int Convert()
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -30,6 +29,7 @@ namespace Mario_Data_Conversion_Tool
 
             List<ExtraIngredient> extraIngredienten = ReadFile();
             Upload(extraIngredienten);
+            return extraIngredienten.Count;
 
         }
 

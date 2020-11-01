@@ -20,8 +20,10 @@ namespace Mario_Data_Conversion_Tool.Converters
             this.fileName = fileName;
         }
 
-        public void Convert() {
-            
+        public Tuple<int, int> Convert() {
+            int gemeentenLines = 0;
+            int postcodeLines = 0;
+
             String myConnectionString = "Provider=Microsoft.JET.OLEDB.4.0;" + "data source=" + fileName;
             {
                 try
@@ -42,13 +44,13 @@ namespace Mario_Data_Conversion_Tool.Converters
                     gemeenten.TableName = "dbo.Gemeenten";
                     gemeenten.Columns["N42_GEM_KODE"].ColumnName = "Kode";
                     gemeenten.Columns["N42_GEM_NAAM"].ColumnName = "Naam";
-                    
+
+                    gemeentenLines = gemeenten.Rows.Count;
                     myConnection.ConnectionString = myConnectionString;
                     myConnection.Open();
                     cmd.CommandText = "SELECT * FROM `POSTCODES`";
                     reader = cmd.ExecuteReader(CommandBehavior.CloseConnection); // close conn after complete
 
-                    // Load the result into a DataTable
                     DataTable postcodes = new DataTable();
                     postcodes.Load(reader);
 
@@ -63,6 +65,7 @@ namespace Mario_Data_Conversion_Tool.Converters
 
 
                     SqlConnection conn = SqlConnectionMaker.ReturnConnection();
+                    postcodeLines = postcodes.Rows.Count;
 
                     try
                     {
@@ -74,8 +77,9 @@ namespace Mario_Data_Conversion_Tool.Converters
                         command.ExecuteNonQuery();
 
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
+                        logwarn.Warn(e.Message);
                         throw;
                     }
                     finally
@@ -94,8 +98,9 @@ namespace Mario_Data_Conversion_Tool.Converters
                         command.ExecuteNonQuery();
 
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
+                        logwarn.Warn(e.Message);
                         throw;
                     }
                     finally
@@ -104,15 +109,14 @@ namespace Mario_Data_Conversion_Tool.Converters
                     }
                     conn.Open();
                     SqlBulkCopy bulkcopy = new SqlBulkCopy(conn);
-                    //I assume you have created the table previously
-                    //Someone else here already showed how  
                     bulkcopy.DestinationTableName = gemeenten.TableName;
                     try
                     {
                         bulkcopy.WriteToServer(gemeenten);
                     }
                     catch (Exception e)
-                    {                      
+                    {
+                        logwarn.Warn(e.Message);
                     }
 
                     bulkcopy.DestinationTableName = postcodes.TableName;
@@ -122,6 +126,7 @@ namespace Mario_Data_Conversion_Tool.Converters
                     }
                     catch (Exception e)
                     {
+                        logwarn.Warn(e.Message);
                     }
                     finally
                     {
@@ -134,8 +139,10 @@ namespace Mario_Data_Conversion_Tool.Converters
                 catch (Exception ex)
                 {
                     Console.WriteLine("OLEDB Connection FAILED: " + ex.Message);
+                    logwarn.Warn(ex.Message);
                 }
             }
+            return Tuple.Create(gemeentenLines, postcodeLines);
 
         }
     }

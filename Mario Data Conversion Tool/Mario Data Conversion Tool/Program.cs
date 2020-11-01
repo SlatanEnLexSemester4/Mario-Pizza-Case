@@ -44,16 +44,28 @@ namespace Mario_Data_Conversion_Tool
             MarioPostcodeTabelConverter postcodeTabelConverter = new MarioPostcodeTabelConverter(postcodeTabelFile);
 
 
-            winkelConverter.Convert();
-            extraIngredientConverter.Convert();
-            pizzaBodemsConverter.Convert();
-            overigeProductenConverter.Convert();
-            pizzaIngredientenConverter.Convert();
-            orderDataConvertor.Convert();
-            postcodeTabelConverter.Convert();
+            int winkelLines = winkelConverter.Convert();
+            int extraIngredientLines = extraIngredientConverter.Convert();
+            int pizzaBodemsLines = pizzaBodemsConverter.Convert();
+            int overigeProductenLines = overigeProductenConverter.Convert();
+            int pizzaIngredientenLines = pizzaIngredientenConverter.Convert();
+            int orderLines = orderDataConvertor.Convert();
+            var gemeentePostcodeLines = postcodeTabelConverter.Convert();
 
             log.Info("- - - - -");
             log.Info("Ending : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            log.Info("- - - - -");
+
+            log.Info("- - - - -");
+            log.Info("Total lines added during import:");
+            log.Info("Winkels:            " + winkelLines);
+            log.Info("Extra Ingredienten: " + extraIngredientLines);
+            log.Info("Pizza Bodems:       " + pizzaBodemsLines);
+            log.Info("Overige Producten:  " + overigeProductenLines);
+            log.Info("Pizza Ingredienten: " + pizzaIngredientenLines);
+            log.Info("Orders:             " + orderLines);
+            log.Info("Gemeenten:          " + gemeentePostcodeLines.Item1);
+            log.Info("Postcodes:          " + gemeentePostcodeLines.Item2);
             log.Info("- - - - -");
 
         }

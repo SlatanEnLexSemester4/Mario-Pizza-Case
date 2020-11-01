@@ -7,7 +7,6 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Mario_Data_Conversion_Tool
 {
@@ -23,7 +22,7 @@ namespace Mario_Data_Conversion_Tool
             this.fileName = fileName;
         }
 
-        public void Convert()
+        public int Convert()
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -31,6 +30,7 @@ namespace Mario_Data_Conversion_Tool
 
             List<PizzaIngredient> pizzaIngredienten = ReadFile();
             Upload(pizzaIngredienten);
+            return pizzaIngredienten.Count;
         }
 
         public List<PizzaIngredient> ReadFile()
@@ -109,6 +109,7 @@ namespace Mario_Data_Conversion_Tool
                 tempIngredientName = myWorksheet.GetValue(rowNum, 11).ToString();
                 if (tempIngredientName == "Chicken Kebak")
                 {
+                    logwarn.Warn("Misspelled ingredientname Chicken Kebak in file: " + fileName + " row: " + rowNum);
                     tempIngredientName = "Chicken Kebab";
                 }
 

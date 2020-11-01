@@ -23,7 +23,7 @@ namespace Mario_Data_Conversion_Tool
             this.fileName = fileName;
         }
 
-        public void Convert()
+        public int Convert()
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -31,6 +31,7 @@ namespace Mario_Data_Conversion_Tool
 
             List<Winkel> winkels = ReadFile();
             Upload(winkels);
+            return winkels.Count;
         }
 
         public List<Winkel> ReadFile() 
@@ -138,8 +139,9 @@ namespace Mario_Data_Conversion_Tool
                 command.ExecuteNonQuery();
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                logwarn.Warn(e.Message);
                 throw;
             }
             finally
@@ -190,8 +192,9 @@ namespace Mario_Data_Conversion_Tool
 
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                logwarn.Warn(e.Message);
                 throw;
             }
             finally

@@ -4,7 +4,6 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Mario_Data_Conversion_Tool.Converters;
 using Mario_Data_Conversion_Tool.DataTypes;
 using OfficeOpenXml;
@@ -24,7 +23,7 @@ namespace Mario_Data_Conversion_Tool
             this.fileName = fileName;
         }
 
-        public void Convert()
+        public int Convert()
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -32,6 +31,7 @@ namespace Mario_Data_Conversion_Tool
 
             List<PizzaBodem> pizzaBodems = ReadFile();
             Upload(pizzaBodems);
+            return pizzaBodems.Count;
         }
 
         public List<PizzaBodem> ReadFile()
@@ -69,7 +69,6 @@ namespace Mario_Data_Conversion_Tool
                 {
                     tempAvailable = false;
                 }
-                //System.Console.WriteLine(tempName + " " + tempDiameter + " " + tempDescription +" " + decimal.Parse(tempFee) +" " + tempAvailable);
                 pizzaBodems.Add(new PizzaBodem(tempName, tempDiameter, tempDescription, decimal.Parse(tempFee, CultureInfo.InvariantCulture), tempAvailable));
                 log.Info("Succesfully added line:" + rowNum);
                 tempName = "";

@@ -23,7 +23,7 @@ namespace Mario_Data_Conversion_Tool
             this.fileNames = fileNames;
         }
 
-        public void Convert()
+        public int Convert()
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -31,6 +31,7 @@ namespace Mario_Data_Conversion_Tool
 
             List<Order> orders = ReadFiles();
             Upload(orders);
+            return orders.Count;
         }
 
         public List<Order> ReadFiles()

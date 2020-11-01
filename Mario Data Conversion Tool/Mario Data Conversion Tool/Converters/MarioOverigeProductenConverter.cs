@@ -7,7 +7,6 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Mario_Data_Conversion_Tool
 {
@@ -23,7 +22,7 @@ namespace Mario_Data_Conversion_Tool
             this.fileName = fileName;
         }
 
-        public void Convert()
+        public int Convert()
         {
             log.Info("- - - - -");
             log.Info("Running : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -31,6 +30,7 @@ namespace Mario_Data_Conversion_Tool
 
             List<OverigProduct> overigeProducten = ReadFile();
             Upload(overigeProducten);
+            return overigeProducten.Count;
         }
 
         public List<OverigProduct> ReadFile()
@@ -64,6 +64,7 @@ namespace Mario_Data_Conversion_Tool
                 {
                     tempDescription = myWorksheet.GetValue(rowNum, 4).ToString();
                     tempDescription = tempDescription.Replace("_x000D_", "").Replace("\n", "").Replace("\r", "");
+                    logwarn.Warn("Unwanted characters in description in file: " + fileName + " row: " + rowNum);
                 }
                 tempPrice = myWorksheet.GetValue(rowNum, 5).ToString();
                 tempPrice = new string(tempPrice.Where(c => (Char.IsDigit(c) || c == '.' || c == ',')).ToArray());
@@ -86,7 +87,6 @@ namespace Mario_Data_Conversion_Tool
                 }
                 
                 overigeProducten.Add(new OverigProduct(tempCategory, tempSubtempCategory, tempName, tempDescription, decimal.Parse(tempPrice, CultureInfo.InvariantCulture), tempSpicy, tempVegetarian));
-                log.Info("Succesfully added line:" + rowNum);
 
                 tempCategory = "";
                 tempSubtempCategory = "";
